@@ -17,9 +17,8 @@ const LandingPage = () => {
   
   return (
     <>
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+        <Sidebar isOpen={isOpen} toggle={toggle} />
         <Navbar toggle={toggle} />
-        {/* <HeroSection /> */}
         <HeroSection2 />
         <InfoSection {...homeObjOne} />
         <InfoSection {...homeObjTwo} />

@@ -4,19 +4,73 @@ import {MdArrowForward, MdKeyboardArrowRight} from 'react-icons/md'
 
 export const HeroSection2Container = styled.div`
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     height: 100vh;
-    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    /* background: yellow; */
+
+    @media screen and (max-width: 912px) {
+        height: 650px;
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        /* height: 750px; */
+    }
 `
 
 export const TextContent = styled.div`
-    padding-top: 80px;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    justify-content: center;
+    margin-top: 80px;
+    padding: 0 4rem;
+    width: 50%;
+
+    @media screen and (max-width: 912px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 768px) {
+        text-align: center;
+        width: 80%;
+    }
+
+    @media screen and (max-width: 480px) {
+        text-align: center;
+        width: 100%;
+    }
+`
+
+export const BlobImg = styled.img`
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    z-index: -10;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+`
+
+export const HeroImg = styled.img`
+    width: 45%;
+    align-self: flex-end;
+    justify-self: flex-start;
     /* background: red; */
-    height: 100%;
-    padding-left: 6rem;
+
+    @media screen and (max-width: 912px) {
+        align-self: center;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 50%;
+        display: none;
+    }
 `
 
 export const Hero2H1 = styled.h1`
@@ -58,6 +112,11 @@ export const Hero2BtnWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+
+    @media screen and (max-width: 768px) {
+        align-items: center;
+    }
 `
 
 export const Hero2Gradient = styled.div`
@@ -69,21 +128,7 @@ export const Hero2Gradient = styled.div`
     background-image: linear-gradient(180deg, rgba(112, 175, 206, 1), rgba(165, 222, 241, 0.5));
 `
 
-export const BlobImg = styled.img`
-    position: absolute;
-    top: -25%;
-    left: -20%;
-    height: 900px;
-    z-index: -99;
-`
 
-export const HeroImg = styled.img`
-    position: absolute;
-    bottom: 0;
-    right: 48px;
-    height: 400px;
-    z-index: -99;
-`
 
 export const ArrowForward = styled(MdArrowForward)`
     margin-left: 8px;

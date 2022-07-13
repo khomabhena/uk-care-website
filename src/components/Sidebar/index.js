@@ -1,12 +1,15 @@
 import React from 'react'
+import { IconContext } from 'react-icons/lib'
 import { CloseIcon, Icon, SidebarContainer, SidebarLink, SidebarMenu, SidebarRoute, SidebarWrapper, SideBtnWrap } from './SidebarElements'
 
 const Sidebar = ({ isOpen, toggle }) => {
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
+        <IconContext.Provider value={{color: '#000'}}>      
         <Icon onClick={toggle}>
             <CloseIcon />
         </Icon>
+        </IconContext.Provider>
 
         <SidebarWrapper>
             <SidebarMenu>

@@ -8,9 +8,10 @@ export const SidebarContainer = styled.aside`
     z-index: 999;
     width: 100%;
     height: 100%;
-    background: #0d0d0d;
+    background: var(--primaryWhite);
     display: grid;
     align-items: center;
+    justify-content: center;
     top: 0;
     left: 0;
     transition: 0.3s ease-in-out;
@@ -53,12 +54,12 @@ export const SidebarLink = styled(LinkS)`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-decoration: none;
     list-style: none;
     transition: 0.2s ease-in-out;
     text-decoration: none;
-    color: white;
+    color: var(--primaryDark);
     cursor: pointer;
 
     &:hover {
@@ -74,10 +75,10 @@ export const SideBtnWrap = styled.div`
 
 export const SidebarRoute = styled(LinkR)`
     border-radius: 50px;
-    background: #01bf71;
+    background: var(--primaryDark);
     white-space: nowrap;
     padding: 16px 64px;
-    color: #010606;
+    color: var(--primaryWhite);
     font-size: 16px;
     outline: none;
     border: none;

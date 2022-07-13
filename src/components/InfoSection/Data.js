@@ -10,7 +10,7 @@ export const homeObjOne = {
     topLine: 'About Us',
     headline: 'Professional Care Givers.',
     description: 'UK Care Connection is an online recruitment portal that facilitates jobseekers and employers to find skilled staff from Africa.',
-    buttonLabel: 'Get Started',
+    buttonLabel: 'Hire Care Workers',
     imgStart: true,
     img: Img1,
     alt: 'Car',

@@ -3,7 +3,7 @@ import { Button } from '../ButtonElement'
 import { ArrowForward, ArrowRight, BlobImg } from './HeroElements2'
 import { Hero2BtnWrapper, Hero2Gradient, Hero2H1, Hero2H2, Hero2P, HeroImg, HeroSection2Container, TextContent } from './HeroElements2';
 import img from '../../images/svg-medical-care.svg'
-import blob from '../../images/blob.png'
+import blob from '../../images/blob2.png'
 
 const HeroSection2 = () => {
     const [hover, setHover] = useState(false);
@@ -18,7 +18,7 @@ const HeroSection2 = () => {
         <TextContent>
             <Hero2H1 primary='true'>Our Best</Hero2H1>
             <Hero2H1 primary='true'>Care Givers</Hero2H1>
-            <Hero2H2 primary='true'>Online</Hero2H2>
+            <Hero2H2 primary='true'></Hero2H2>
             <Hero2P>Join a network of the world's best care givers &amp; get full-time, long-term care giving jobs with better compensation and career growth.</Hero2P>
             <Hero2BtnWrapper>
                 <Button to="signup" 
