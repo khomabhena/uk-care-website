@@ -20,7 +20,7 @@ export const TextContent = styled.div`
 `
 
 export const Hero2H1 = styled.h1`
-    color: ${({primary}) => (primary ? `var(--primaryDark)`: `black`)};
+    color: ${({primary}) => (primary ? `var(--grey)`: `black`)};
     font-size: 48px;
 
     @media screen and (max-width: 768px) {
@@ -33,14 +33,14 @@ export const Hero2H1 = styled.h1`
 `
 
 export const Hero2H2 = styled.h2`
-    color: var(--primary);
+    color: var(--greyLight);
     font-size: 30px;
     padding-left: 4px;
 `
 
 export const Hero2P = styled.p`
     margin-top: 24px;
-    color: black;
+    color: var(--grey);
     font-size: 24px;
     max-width: 500px;
 
@@ -69,12 +69,20 @@ export const Hero2Gradient = styled.div`
     background-image: linear-gradient(180deg, rgba(112, 175, 206, 1), rgba(165, 222, 241, 0.5));
 `
 
+export const BlobImg = styled.img`
+    position: absolute;
+    top: -25%;
+    left: -20%;
+    height: 900px;
+    z-index: -99;
+`
+
 export const HeroImg = styled.img`
     position: absolute;
-    /* top: 0; */
-    right: 100px;
     bottom: 0;
-    height: 70%;
+    right: 48px;
+    height: 400px;
+    z-index: -99;
 `
 
 export const ArrowForward = styled(MdArrowForward)`

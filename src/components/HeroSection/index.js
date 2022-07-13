@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Button } from '../ButtonElement'
-import { ArrowForward, ArrowRight } from './HeroElements2'
+import { ArrowForward, ArrowRight, BlobImg } from './HeroElements2'
 import { Hero2BtnWrapper, Hero2Gradient, Hero2H1, Hero2H2, Hero2P, HeroImg, HeroSection2Container, TextContent } from './HeroElements2';
-import img from '../../images/svg-4.svg'
+import img from '../../images/svg-medical-care.svg'
+import blob from '../../images/blob.png'
 
 const HeroSection2 = () => {
     const [hover, setHover] = useState(false);
@@ -29,7 +30,8 @@ const HeroSection2 = () => {
                 </Button>
             </Hero2BtnWrapper>
         </TextContent>
-        <Hero2Gradient />
+        {/* <Hero2Gradient /> */}
+        <BlobImg src={blob} />
         <HeroImg src={img} />
     </HeroSection2Container>
   )
