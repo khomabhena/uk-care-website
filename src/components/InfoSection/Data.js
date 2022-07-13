@@ -1,5 +1,5 @@
-import Img1 from '../../images/svg-4.svg'
-import Img2 from '../../images/svg-2.svg'
+import Img1 from '../../images/svg-gran.svg'
+import Img2 from '../../images/svg-signin.svg'
 import Img3 from '../../images/svg-5.svg'
 
 export const homeObjOne = {
@@ -26,7 +26,7 @@ export const homeObjTwo = {
     topLine: 'Unlimited Access',
     headline: 'Login to your account at any time',
     description: 'We have your covered no matter where you are. All you need is an internet connection and a smart device',
-    buttonLabel: 'Learn More',
+    buttonLabel: 'Sign In',
     imgStart: false,
     img: Img2,
     alt: 'Car',
@@ -42,7 +42,7 @@ export const homeObjThree = {
     topLine: 'Join Our Team',
     headline: 'Creating an account is extremely easy',
     description: 'Get everything setup and ready in under 10 minutes. All you need to do is add your information and you are ready to go.',
-    buttonLabel: 'Start Now',
+    buttonLabel: 'Sign Up Now',
     imgStart: true,
     img: Img3,
     alt: 'Car',

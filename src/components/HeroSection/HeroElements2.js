@@ -6,10 +6,10 @@ export const HeroSection2Container = styled.div`
     position: relative;
     height: 100vh;
     z-index: 1;
-    background: var(--white);
 `
 
 export const TextContent = styled.div`
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -40,7 +40,7 @@ export const Hero2H2 = styled.h2`
 
 export const Hero2P = styled.p`
     margin-top: 24px;
-    color: var(--grey);
+    color: var(--greyDark);
     font-size: 24px;
     max-width: 500px;
 

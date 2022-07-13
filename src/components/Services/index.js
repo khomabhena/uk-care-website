@@ -1,8 +1,8 @@
 import React from 'react'
-import { ServicesCard, ServicesContainer, ServicesH1, ServicesH2, ServicesIcon, ServicesP, ServicesWrapper } from './ServicesElements'
-import Icon1 from '../../images/svg-5.svg'
-import Icon2 from '../../images/svg-6.svg'
-import Icon3 from '../../images/svg-7.svg'
+import { ServicesCard, ServicesContainer, ServicesH1, ServicesH2, ServicesIcon, ServicesIconWrap, ServicesP, ServicesWrapper } from './ServicesElements'
+import Icon1 from '../../images/svg-injured.svg'
+import Icon2 from '../../images/svg-nurse.svg'
+import Icon3 from '../../images/svg-gran.svg'
 
 const Services = () => {
   return (
@@ -10,19 +10,19 @@ const Services = () => {
         <ServicesH1>Our Services</ServicesH1>
             <ServicesWrapper>
                 <ServicesCard>
-                    <ServicesIcon src={Icon1} />
-                    <ServicesH2>Reduce expenses</ServicesH2>
-                    <ServicesP>We help reduce your fees and increase your overall revenue</ServicesP>
+                    <ServicesIconWrap><ServicesIcon src={Icon1} /></ServicesIconWrap>
+                    <ServicesH2>Nurse/Nurse Aid</ServicesH2>
+                    <ServicesP>We assist individuals with physical disabilities, mental impairments, and other health care needs.</ServicesP>
                 </ServicesCard>
                 <ServicesCard>
-                    <ServicesIcon src={Icon2} />
-                    <ServicesH2>Virtual Services</ServicesH2>
-                    <ServicesP>You can access our platform online anywhere in the world.</ServicesP>
+                    <ServicesIconWrap><ServicesIcon src={Icon2} /></ServicesIconWrap>
+                    <ServicesH2>Adult Care</ServicesH2>
+                    <ServicesP>We provide adults with transitional care and short-term rehabilitation following hospital discharge</ServicesP>
                 </ServicesCard>
                 <ServicesCard>
-                    <ServicesIcon src={Icon3} />
-                    <ServicesH2>Premium Benefits</ServicesH2>
-                    <ServicesP>Unlock our special membership card that returns 5% cash back.</ServicesP>
+                    <ServicesIconWrap><ServicesIcon src={Icon3} /></ServicesIconWrap>
+                    <ServicesH2>Hospice Care</ServicesH2>
+                    <ServicesP>We prioritizes comfort and quality of life by reducing pain and suffering</ServicesP>
                 </ServicesCard>
             </ServicesWrapper>
     </ServicesContainer>
