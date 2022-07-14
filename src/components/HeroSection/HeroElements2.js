@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {MdArrowForward, MdKeyboardArrowRight} from 'react-icons/md'
+import { Link } from "react-router-dom";
 
 
 export const HeroSection2Container = styled.div`
@@ -128,6 +129,28 @@ export const Hero2Gradient = styled.div`
     background-image: linear-gradient(180deg, rgba(112, 175, 206, 1), rgba(165, 222, 241, 0.5));
 `
 
+export const HeroButton = styled(Link)`
+    border-radius: 50px;
+    background: ${({ primary }) => (primary ? `var(--primaryDark)`: `var(--primary)`)};
+    white-space: nowrap;
+    padding: ${({ big }) => (big ? '14px 48px': '12px 38px')};
+    color: ${({ dark }) => (dark ? '#ffffff' : '#fff')};
+    font-size: ${({ fontBig }) => (fontBig ? '20px' : '1.1rem')};
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: ${({ primary }) => (primary ? `var(--primary)` : `var(--primary)`)};
+        
+    }
+`
 
 
 export const ArrowForward = styled(MdArrowForward)`
