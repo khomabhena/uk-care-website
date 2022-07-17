@@ -25,7 +25,7 @@ const SignIn = () => {
                   <ForgotPasswordDiv to="/forgot-password">
                       <ForgotPassword>Forgot Password?</ForgotPassword>
                   </ForgotPasswordDiv>
-                  <LoginButton>Sign In</LoginButton>
+                  <LoginButton to="/profile">Sign In</LoginButton>
                   <SignupButton to="/signup">Don't have an account? Sign Up</SignupButton>
               </LoginForm>
           </RightSide>

@@ -37,7 +37,7 @@ const SignUp = () => {
                     <Label>Confirm Password</Label>
                     <Input placeholder='Confirm your password' />
                     
-                    <LoginButton>Sign Up</LoginButton>
+                    <LoginButton to="/profile">Sign Up</LoginButton>
                     <SignupButton to="/signin">Already a member? Sign In</SignupButton>
                 </LoginForm>
             </RightSide>

@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: Inter, "sans-serif";
+  font-family: 'Nunito', sans-serif;;
 }
 
 :root {
@@ -9,6 +9,7 @@
   --primaryDark: #17224D;
   --primaryLight: #17E9E1;
   --primaryLightAlpha: #17E9E110;
+  --iconAlpha: #17E9E120;
   --primaryWhite: #F5FAFA;
   /* --primaryWhite: #f5fafa00; */
 

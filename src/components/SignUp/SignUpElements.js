@@ -133,11 +133,15 @@ export const Input = styled.input`
 
 `
 
-export const LoginButton = styled.button`
+export const LoginButton = styled(Link)`
     font-size: 1rem;
     height: 40px;
     border-radius: 4px;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     color: var(--primaryWhite);
     background: var(--primary);
     cursor: pointer;

@@ -153,14 +153,18 @@ export const ForgotPassword = styled.p`
     cursor: pointer;
 `
 
-export const LoginButton = styled.button`
+export const LoginButton = styled(Link)`
     font-size: 1.1rem;
     font-weight: 700;
     height: 40px;
     border-radius: 4px;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--primaryWhite);
     background: var(--primary);
+    text-decoration: none;
     cursor: pointer;
 `
 
