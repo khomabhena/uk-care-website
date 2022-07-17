@@ -21,7 +21,7 @@ const Profile = () => {
     <>
     <IconContext.Provider value={{color: `var(--grey)`}}>
       <ProfileNav selectedPage={selectedPage} togglePage={togglePage} />
-      <ProfileContainer>
+      <ProfileContainer selectedPage={selectedPage === 'profile'}>
         <LeftSide>
           <ProfileInfo />
         </LeftSide>

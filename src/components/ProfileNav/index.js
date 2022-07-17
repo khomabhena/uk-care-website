@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {FaBars} from 'react-icons/fa'
 import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './ProfileNavElements'
 import { IconContext } from 'react-icons/lib'

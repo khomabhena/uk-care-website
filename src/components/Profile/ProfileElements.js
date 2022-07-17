@@ -22,7 +22,7 @@ export const HorizontalLine = styled.div`
 `
 
 export const ProfileContainer = styled.div`
-    display: flex;
+    display: ${({ selectedPage }) => (selectedPage ? `flex` : 'none')};
     flex-direction: row;
     justify-content: center;
     margin: 0.5rem 3rem;
