@@ -21,11 +21,9 @@ const Profile = () => {
     <>
     <IconContext.Provider value={{color: `var(--grey)`}}>
       <ProfileNav selectedPage={selectedPage} togglePage={togglePage} />
+      {/* Profile Container */}
       <ProfileContainer selectedPage={selectedPage === 'profile'}>
-        <LeftSide>
-          <ProfileInfo />
-        </LeftSide>
-
+        <LeftSide><ProfileInfo /></LeftSide>
         <RightSide>
           <NavWrap>
             <Overview onClick={() => setProfile('overview')} selectedProfile={selectedProfile}>Overview</Overview>
@@ -35,9 +33,11 @@ const Profile = () => {
           <ProfileOverview selectedProfile={selectedProfile} />
           <ProfileUpdate selectedProfile={selectedProfile} />
         </RightSide>
-      
-
       </ProfileContainer>
+      {/* Jobs Container */}
+      <JobsContainer>
+        
+      </JobsContainer>
     </IconContext.Provider>
     </>
   )

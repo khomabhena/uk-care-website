@@ -21,6 +21,8 @@ export const HorizontalLine = styled.div`
     margin-bottom: 16px;
 `
 
+
+// Profile Container
 export const ProfileContainer = styled.div`
     display: ${({ selectedPage }) => (selectedPage ? `flex` : 'none')};
     flex-direction: row;
@@ -119,6 +121,10 @@ export const Update = styled.h4`
         border-bottom: 2px solid var(--primary);
     }
 `
+
+
+
+// Jobs Container
 
 
 
