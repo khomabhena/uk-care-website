@@ -94,7 +94,8 @@ export const Overview = styled.h4`
     align-items: center;
     border-bottom: 2px solid var(--primary);
     padding: 0 2rem 1rem;
-    color: var(--primary);
+    border-bottom: ${({ selectedProfile }) => (selectedProfile === 'overview' ? `2px solid var(--primary)` : `none`)};
+    color: ${({ selectedProfile }) => (selectedProfile === 'overview' ? `var(--primary)`: `var(--grey)`)};
     cursor: pointer;
 
     &:hover {
@@ -104,13 +105,13 @@ export const Overview = styled.h4`
 `
 
 export const Update = styled.h4`
-    color: var(--grey);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid transparent;
     padding: 0 2rem 1rem;
+    border-bottom: ${({ selectedProfile }) => (selectedProfile === 'update' ? `2px solid var(--primary)` : `none`)};
+    color: ${({ selectedProfile }) => (selectedProfile === 'update' ? `var(--primary)`: `var(--grey)`)};
     cursor: pointer;
 
     &:hover {

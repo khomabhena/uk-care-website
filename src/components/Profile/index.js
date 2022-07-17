@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProfileNav from '../ProfileNav'
 import { 
   HorizontalLine, LeftSide, 
@@ -7,7 +7,14 @@ import ProfileInfo from '../ProfileInfo'
 import ProfileOverview from '../ProfileOverview'
 import ProfileUpdate from '../ProfileUpdate'
 import { IconContext } from 'react-icons/lib'
+
 const Profile = () => {
+
+  const [selectedPage, setPage] = useState('profile');
+  const [selectedProfile, setProfile] = useState('update');
+
+  
+  
   return (
     <>
     <IconContext.Provider value={{color: `var(--grey)`}}>
@@ -19,13 +26,14 @@ const Profile = () => {
 
         <RightSide>
           <NavWrap>
-            <Overview>Overview</Overview>
-            <Update>Update</Update>
+            <Overview onClick={() => setProfile('overview')} selectedProfile={selectedProfile}>Overview</Overview>
+            <Update onClick={() => setProfile('update')} selectedProfile={selectedProfile}>Update</Update>
           </NavWrap>
           <HorizontalLine />
-          {/* <ProfileOverview /> */}
-          <ProfileUpdate />
+          <ProfileOverview selectedProfile={selectedProfile} />
+          <ProfileUpdate selectedProfile={selectedProfile} />
         </RightSide>
+      
 
       </ProfileContainer>
     </IconContext.Provider>

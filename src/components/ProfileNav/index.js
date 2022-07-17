@@ -35,31 +35,31 @@ const ProfileNav = ({ toggle }) => {
                 <MobileIcon onClick={toggle}><FaBars /></MobileIcon>
                 <NavMenu>
                     <NavItem>
-                        <NavLinks to="about"
+                        <NavLinks to="profile"
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
                         >Profile</NavLinks>
                     </NavItem>
                     <NavItem>
-                        <NavLinks to="discover"
-                        smooth={true}
-                        duration={500} spy={true} exact='true' offset={-80}
-                        >Qualifications</NavLinks>
-                    </NavItem>
-                    <NavItem>
-                        <NavLinks to="services"
-                        smooth={true}
-                        duration={500} spy={true} exact='true' offset={-80}
-                        >Experience</NavLinks>
-                    </NavItem>
-                    <NavItem>
-                        <NavLinks to="services"
+                        <NavLinks to="jobs"
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
                         >Suggested Jobs</NavLinks>
                     </NavItem>
                     <NavItem>
-                        <NavLinks to="signup"
+                        <NavLinks to="qualifications"
+                        smooth={true}
+                        duration={500} spy={true} exact='true' offset={-80}
+                        >Qualifications</NavLinks>
+                    </NavItem>
+                    <NavItem>
+                        <NavLinks to="experience"
+                        smooth={true}
+                        duration={500} spy={true} exact='true' offset={-80}
+                        >Experience</NavLinks>
+                    </NavItem>
+                    <NavItem>
+                        <NavLinks to="trainings"
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
                         >Trainings</NavLinks>

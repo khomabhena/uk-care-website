@@ -3,9 +3,9 @@ import { ButtonWrap, FileChooser, Image, ImageIcon, ImageWrap, Input, InputConta
 import { BsFillPersonFill } from 'react-icons/bs'
 import Img from '../../images/profile-icon.png'
 
-const ProfileUpdate = () => {
+const ProfileUpdate = ({ selectedProfile }) => {
   return (
-    <ProfileUpdateContainer>
+    <ProfileUpdateContainer selectedProfile={selectedProfile}>
         <Title>My Account</Title>
         <ImageWrap>
             <Image src={Img} />

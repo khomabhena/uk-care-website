@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProfileUpdateContainer = styled.div`
-    display: flex;
+    display: ${({ selectedProfile }) => (selectedProfile === 'update' ? 'flex' : 'none')};
     flex-direction: column;
     padding: 1rem 2rem;
 `

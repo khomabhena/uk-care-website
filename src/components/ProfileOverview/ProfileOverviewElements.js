@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 
 export const OverviewWrap = styled.div`
+    display: ${({ selectedProfile }) => (selectedProfile === 'overview' ? '' : 'none')};
     padding: 1rem 2rem;
 
     @media screen and (max-width: 480px) {
