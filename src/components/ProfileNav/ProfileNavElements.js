@@ -87,6 +87,7 @@ export const NavLinks = styled(LinkS)`
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
+    border-bottom: ${({ selectedPage }) => (selectedPage ? `3px solid var(--primary)` : 'transparent')};
 
     &.active {
         border-bottom: 3px solid var(--primaryDark);

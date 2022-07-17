@@ -1,50 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {FaBars} from 'react-icons/fa'
-import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavBtn, NavBtnLink, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './ProfileNavElements'
+import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './ProfileNavElements'
 import { IconContext } from 'react-icons/lib'
-import { animateScroll as scroll } from 'react-scroll'
 import logo from '../../images/logo-big.PNG'
 import profileIcon from '../../images/profile-icon.png'
 
-const ProfileNav = ({ toggle }) => {
-
-    const [scrollNav, setScrollNav] = useState(false)
-
-    const changeNav = () => {
-        if (window.scrollY >= 80) {
-            setScrollNav(true)
-        } else {
-            setScrollNav(false)
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener('scroll', changeNav)
-    }, [])
-
-    const toogleHome = () => {
-        scroll.scrollToTop()
-    }
+const ProfileNav = ({ selectedPage, togglePage }) => {
 
   return (
     <>
-    <IconContext.Provider value={{color: '#000'}}>        
-    <Nav scrollNav={scrollNav}>
+    <IconContext.Provider value={{color: `var(--grey)`}}>        
+    <Nav>
             <NavbarContainer>
-                <NavLogo scrollNav={scrollNav} to="/" onClick={toogleHome} src={logo} />
-                <MobileIcon onClick={toggle}><FaBars /></MobileIcon>
+                <NavLogo to="/" src={logo} />
+                <MobileIcon ><FaBars /></MobileIcon>
                 <NavMenu>
                     <NavItem>
-                        <NavLinks to="profile"
+                        <NavLinks to="profile" selectedPage={selectedPage === 'profile'} onClick={() => togglePage('profile')}
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
-                        >Profile</NavLinks>
+                        >Profile {() => selectedPage === 'profile'}</NavLinks>
                     </NavItem>
                     <NavItem>
-                        <NavLinks to="jobs"
+                        <NavLinks to="jobs" selectedPage={selectedPage === 'jobs'} onClick={() => togglePage('jobs')}
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
-                        >Suggested Jobs</NavLinks>
+                        >Suggested Jobs {selectedPage}</NavLinks>
                     </NavItem>
                     <NavItem>
                         <NavLinks to="qualifications"

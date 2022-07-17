@@ -13,12 +13,14 @@ const Profile = () => {
   const [selectedPage, setPage] = useState('profile');
   const [selectedProfile, setProfile] = useState('update');
 
-  
+  function togglePage(id) {
+      setPage(id)
+  }
   
   return (
     <>
     <IconContext.Provider value={{color: `var(--grey)`}}>
-      <ProfileNav />
+      <ProfileNav selectedPage={selectedPage} togglePage={togglePage} />
       <ProfileContainer>
         <LeftSide>
           <ProfileInfo />
