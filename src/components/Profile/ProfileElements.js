@@ -125,6 +125,16 @@ export const Update = styled.h4`
 
 
 // Jobs Container
+export const JobsContainer = styled.div`
+    display: ${({ selectedPage }) => (selectedPage ? 'flex' : 'none')};
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1rem 2rem;
+
+    @media screen and (max-width: 480px) {
+      margin: 1rem 1rem;
+    }
+`
 
 
 

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import ProfileNav from '../ProfileNav'
 import { 
-  HorizontalLine, LeftSide, 
+  HorizontalLine, JobsContainer, LeftSide, 
   NavWrap, Overview, ProfileContainer, RightSide, Update } from './ProfileElements'
 import ProfileInfo from '../ProfileInfo' 
 import ProfileOverview from '../ProfileOverview'
 import ProfileUpdate from '../ProfileUpdate'
 import { IconContext } from 'react-icons/lib'
+import Jobs from '../Jobs'
 
 const Profile = () => {
 
@@ -21,6 +22,7 @@ const Profile = () => {
     <>
     <IconContext.Provider value={{color: `var(--grey)`}}>
       <ProfileNav selectedPage={selectedPage} togglePage={togglePage} />
+
       {/* Profile Container */}
       <ProfileContainer selectedPage={selectedPage === 'profile'}>
         <LeftSide><ProfileInfo /></LeftSide>
@@ -34,9 +36,13 @@ const Profile = () => {
           <ProfileUpdate selectedProfile={selectedProfile} />
         </RightSide>
       </ProfileContainer>
+
       {/* Jobs Container */}
-      <JobsContainer>
-        
+      <JobsContainer selectedPage={selectedPage === 'jobs'}>
+        <Jobs />
+        <Jobs />
+        <Jobs />
+        <Jobs />
       </JobsContainer>
     </IconContext.Provider>
     </>
