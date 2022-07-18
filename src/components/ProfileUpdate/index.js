@@ -43,11 +43,13 @@ const ProfileUpdate = ({ selectedProfile }) => {
                     <Input />
                 </Inputwrap>
                 <Inputwrap>
-                    <InputLabel>Location</InputLabel>
+                    <InputLabel>Physical Address</InputLabel>
                     <Input />
                 </Inputwrap>
             </InputContainer>
             <InputLabel>Attachements CV</InputLabel>
+            <FileChooser type='file' />
+            <InputLabel>National ID/Passport</InputLabel>
             <FileChooser type='file' />
 
             <Title>Social Media</Title>

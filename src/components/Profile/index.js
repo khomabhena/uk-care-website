@@ -8,14 +8,20 @@ import ProfileOverview from '../ProfileOverview'
 import ProfileUpdate from '../ProfileUpdate'
 import { IconContext } from 'react-icons/lib'
 import Jobs from '../Jobs'
+import JobDetails from '../JobDetails'
 
 const Profile = () => {
 
   const [selectedPage, setPage] = useState('profile');
-  const [selectedProfile, setProfile] = useState('update');
+  const [selectedProfile, setProfile] = useState('overview');
+  const [selectedJobPage, setJobPage] = useState('jobs');
 
   function togglePage(id) {
       setPage(id)
+  }
+
+  function toggleJobPage(id) {
+      setJobPage(id)
   }
   
   return (
@@ -38,12 +44,14 @@ const Profile = () => {
       </ProfileContainer>
 
       {/* Jobs Container */}
-      <JobsContainer selectedPage={selectedPage === 'jobs'}>
-        <Jobs />
-        <Jobs />
-        <Jobs />
-        <Jobs />
+      <JobsContainer selectedJobPage={selectedJobPage} selectedPage={selectedPage === 'jobs'}>
+        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+        <JobDetails selectedJobPage={selectedJobPage === 'jobDetails'} toggleJobPage={toggleJobPage} />
       </JobsContainer>
+
     </IconContext.Provider>
     </>
   )

@@ -130,6 +130,7 @@ export const JobsContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     margin: 1rem 2rem;
+    justify-content: ${({ selectedJobPage }) => (selectedJobPage === 'jobDetails' ? 'center' : 'flex-start')};
 
     @media screen and (max-width: 480px) {
       margin: 1rem 1rem;

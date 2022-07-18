@@ -33,10 +33,8 @@ const Footer = () => {
                 <FooterLinksWrapper>
                     <FooterLinkItems>
                         <FooterLinkTitle>Contact Us</FooterLinkTitle>
-                        <FooterLink to="/about">Contact</FooterLink>
-                        <FooterLink to="/about">Support</FooterLink>
-                        <FooterLink to="/about">Destination</FooterLink>
-                        <FooterLink to="/about">Sponsorship</FooterLink>
+                        <FooterLink to="/about">info@ukcareconnection.co.uk </FooterLink>
+                        <FooterLink to="/about">+44785 162 2037</FooterLink>
                     </FooterLinkItems>
                     <FooterLinkItems>
                         <FooterLinkTitle>Social Media</FooterLinkTitle>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const JobWrapper = styled.div`
-    display: flex;
+    display: ${({ selectedJobPage }) => (selectedJobPage ? 'flex' : 'none')};
     flex-direction: column;
     width: 30%;
     margin: 1rem 1rem;
@@ -84,6 +84,7 @@ export const ApplyButton = styled.button`
     padding: 0.5rem 1rem;
     border-radius: 8px;
     color: var(--primaryWhite);
+    cursor: pointer;
 
     :hover {
         background: var(--primaryDark);
