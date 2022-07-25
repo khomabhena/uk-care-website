@@ -35,8 +35,10 @@ export const NavLogo = styled.img`
     justify-self: flex-start;
     cursor: pointer;
     display: flex;
-    align-items: center;
-    margin-left: 24px;
+    align-self: center;
+    margin-left: 1rem;
+    height: 80%;
+    width: auto;
     
     @media screen and (max-width: 820px) {
         margin-left: 8px;

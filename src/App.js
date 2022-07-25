@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LandingPage from './pages';
 import SignInPage from './pages/signin-page';
@@ -9,8 +9,20 @@ import ProfilePage from './pages/profile-page';
 import EmployerSignUpPage from './pages/employer-signup-page';
 import EmployerSignInPage from './pages/employer-signin-page';
 import EmployerProfilePage from './pages/employer-profile-page';
+import { useContext } from 'react';
+import { AuthContext } from './components/Context/AuthContext';
 
 function App() {
+  const { currentuser } = useContext(AuthContext)
+
+  const IsUserAuthorized = ({ children }) => {
+    return currentuser ? children : <Navigate to='/signin' />
+  }
+
+  const IsEmployerAuthorized = ({ children }) => {
+    return currentuser ? children : <Navigate to='/employer-signin' />
+  } 
+
   return (
     <BrowserRouter>
       <Routes>
@@ -20,8 +32,9 @@ function App() {
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/employer-signup' element={<EmployerSignUpPage />} />
         <Route path='/employer-signin' element={<EmployerSignInPage />} />
-        <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/employer-profile' element={<EmployerProfilePage />} />
+
+        <Route path='/profile' element={<IsUserAuthorized> <ProfilePage /> </IsUserAuthorized>} />
+        <Route path='/employer-profile' element={<IsEmployerAuthorized> <EmployerProfilePage /> </IsEmployerAuthorized>} />
       </Routes>
     </BrowserRouter>
   );

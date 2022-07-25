@@ -39,18 +39,6 @@ const EmployerProfileNav = ({ selectedPage, togglePage }) => {
                         duration={500} spy={true} exact='true' offset={-80}
                         >Applications</NavLinks>
                     </NavItem>
-                    <NavItem>
-                        <NavLinks to="experience"
-                        smooth={true}
-                        duration={500} spy={true} exact='true' offset={-80}
-                        >Experience</NavLinks>
-                    </NavItem>
-                    <NavItem>
-                        <NavLinks to="trainings"
-                        smooth={true}
-                        duration={500} spy={true} exact='true' offset={-80}
-                        >Trainings</NavLinks>
-                    </NavItem>
                 </NavMenu>
                 <RightSide>
                     <ImageWrap>
