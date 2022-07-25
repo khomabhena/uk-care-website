@@ -31,13 +31,13 @@ const EmployerProfileNav = ({ selectedPage, togglePage }) => {
                         <NavLinks to="jobs" selectedPage={selectedPage === 'jobs'} onClick={() => togglePage('jobs')}
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
-                        >Suggested Jobs</NavLinks>
+                        >My Jobs</NavLinks>
                     </NavItem>
                     <NavItem>
                         <NavLinks to="qualifications"
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
-                        >Qualifications</NavLinks>
+                        >Applications</NavLinks>
                     </NavItem>
                     <NavItem>
                         <NavLinks to="experience"

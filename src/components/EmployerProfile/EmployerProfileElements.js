@@ -137,6 +137,9 @@ export const JobsContainer = styled.div`
     }
 `
 
-
-
-
+export const JobsCreate = styled.div`
+    display: ${({ selectedPage }) => (selectedPage ? 'flex' : 'none')};
+    flex-direction: column;
+    margin: 1rem 2rem;
+    justify-content: center;
+`

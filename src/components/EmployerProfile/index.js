@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { 
-  HorizontalLine, JobsContainer, LeftSide, 
+  HorizontalLine, JobsContainer, JobsCreate, LeftSide, 
   NavWrap, Overview, ProfileContainer, RightSide, Update } from './EmployerProfileElements' 
 import EmployerProfileOverview from '../EmployerProfileOverview'
 import EmployerProfileUpdate from '../EmployerProfileUpdate'
@@ -9,6 +9,7 @@ import Jobs from '../Jobs'
 import JobDetails from '../JobDetails'
 import EmployerProfileInfo from '../EmployerProfileInfo'
 import EmployerProfileNav from '../EmployerProfileNav'
+import EmployerJobs from '../EmployerJobs'
 
 const EmployerProfile = () => {
 
@@ -45,12 +46,15 @@ const EmployerProfile = () => {
 
       {/* Jobs Container */}
       <JobsContainer selectedJobPage={selectedJobPage} selectedPage={selectedPage === 'jobs'}>
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+        <EmployerJobs shortWidth='true' />
+        <EmployerJobs shortWidth='true' />
+        <EmployerJobs shortWidth='true' />
         <JobDetails selectedJobPage={selectedJobPage === 'jobDetails'} toggleJobPage={toggleJobPage} />
       </JobsContainer>
+
+      <JobsCreate selectedPage={selectedPage === 'createJob'}>
+        Create Job
+      </JobsCreate>
 
     </IconContext.Provider>
     </>

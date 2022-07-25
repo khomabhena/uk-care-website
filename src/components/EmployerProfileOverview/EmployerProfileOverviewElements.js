@@ -93,7 +93,7 @@ export const JobTitle = styled.h4`
     margin-top: 3rem;
 `
 export const JobContainer = styled.div`
-    display: flex;
+    display: ${({ createJob }) => (createJob ? 'none' : 'flex')};
     flex-direction: column;
     width: 100%;
 `
@@ -113,4 +113,21 @@ export const NewJob = styled.button`
     border-radius: 8px;
     color: var(--primaryWhite);
     cursor: pointer;
+`
+
+export const UpdateButton = styled.button`
+    background: var(--primary);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    color: var(--primaryWhite);
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 2rem;
+`
+
+export const CreateJobContainer = styled.div`
+    display: ${({ createJob }) => (createJob ? 'flex' : 'none')};
+    flex-direction: column;
+
 `

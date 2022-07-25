@@ -1,23 +1,23 @@
 import React from 'react'
-import { BottomWrap, Company, ContentWrap, FullTime, HorizontalWrap, IconWrap, JobContainer, Location, Salary, Text, Title, Urgent } from './EmployerJobsElements'
+import { BottomWrap, Company, ContentWrap, FullTime, HorizontalWrap, IconWrap, JobContainer, Location, OutterContainer, Salary, Text, Title, Urgent } from './EmployerJobsElements'
 import {AiOutlineEdit, AiOutlineDelete} from 'react-icons/ai'
 import { IconContext } from 'react-icons'
 
-const EmployerJobs = () => {
+const EmployerJobs = ({ shortWidth }) => {
     const jobDesc = "Certified Nursing Assistants help perform critical tasks that ensure patients are well-cared for and safe during their hospital stay. Checking vital signs, keeping patients clean, and other duties like this are extremely important for patient care and satisfaction."
     
     return (
+    <OutterContainer shortWidth={shortWidth}>
     <JobContainer>
         <ContentWrap>
             <Title>Nurse Aid</Title>
             <Company>UK Care Connection</Company>
             <HorizontalWrap>
                 <Salary>$500 / month</Salary>
-                <Location>Madrid</Location>
             </HorizontalWrap>
             <HorizontalWrap>
                 <FullTime>Full Time</FullTime>
-                <Urgent>Urgent</Urgent>
+                <Location>Madrid</Location>
             </HorizontalWrap>
             <Text>{jobDesc}</Text>
         </ContentWrap>
@@ -42,6 +42,7 @@ const EmployerJobs = () => {
             </IconContext.Provider>
         </BottomWrap>
     </JobContainer>
+    </OutterContainer>
   )
 }
 
