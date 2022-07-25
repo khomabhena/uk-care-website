@@ -136,6 +136,10 @@ export const Input = styled.input`
         outline: none;
     }
 
+    :invalid:focus {
+        border: 1px dashed var(--red);
+    }
+
 `
 
 export const ForgotPasswordDiv = styled(Link)`
@@ -153,7 +157,7 @@ export const ForgotPassword = styled.p`
     cursor: pointer;
 `
 
-export const LoginButton = styled(Link)`
+export const LoginButton = styled.button`
     font-size: 1.1rem;
     font-weight: 700;
     height: 40px;
@@ -178,4 +182,22 @@ export const SignupButton = styled(Link)`
     color: var(--greyLight);
     cursor: pointer;
     text-decoration: none;
+`
+
+export const ErrorContainer = styled.div`
+    display: ${({ error }) => (error ? 'flex' : 'none')};
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding: 1rem 2rem;
+    background: var(--redAlpha);
+    border-radius: 8px;
+    border: 1px solid var(--red);
+`
+
+export const ErrorMessage = styled.p`
+    color: var(--red);
+    font-size: 0.9rem;
+    padding-left: 1rem;
 `

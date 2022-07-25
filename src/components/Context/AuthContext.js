@@ -4,12 +4,12 @@ export const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
 
-    const [currentUser, setCurrenUser] = useState(localStorage.getItem('currentUser') || null)
+    const [currentUser, setCurrentUser] = useState(localStorage.getItem('currentUser') || null)
     const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail') || '')
     const [userUid, setUserUid] = useState(localStorage.getItem('userUid') || '')
    
     const logoutUser = () => {
-        setCurrenUser(null)
+        setCurrentUser(null)
         setUserEmail('')
         setUserUid('')
         localStorage.clear()
@@ -24,7 +24,7 @@ export const AuthContextProvider = ({children}) => {
     
     return (
         <AuthContext.Provider value={
-                            { currentUser, setCurrenUser, userEmail, userUid, 
+                            { currentUser, setCurrentUser, userEmail, userUid, 
                                 logoutUser, setAuthCredentials 
                             }}>
             {children}

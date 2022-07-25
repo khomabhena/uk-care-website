@@ -13,14 +13,14 @@ import { useContext } from 'react';
 import { AuthContext } from './components/Context/AuthContext';
 
 function App() {
-  const { currentuser } = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
 
   const IsUserAuthorized = ({ children }) => {
-    return currentuser ? children : <Navigate to='/signin' />
+    return currentUser ? children : <Navigate to='/signin' />
   }
 
   const IsEmployerAuthorized = ({ children }) => {
-    return currentuser ? children : <Navigate to='/employer-signin' />
+    return currentUser ? children : <Navigate to='/employer-signin' />
   } 
 
   return (

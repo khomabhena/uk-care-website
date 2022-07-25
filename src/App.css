@@ -18,7 +18,9 @@
   --greenAlpha: #49B26550;
   --blue: #1D63DC;
   --blueAlpha: #1D63DC50;
-  --redAlpha: rgba(243, 11, 11, 0.163);
+  --red: #d1001f;
+  --redAlpha: #d1001f50;
+  /* --redAlpha: rgba(243, 11, 11, 0.163); */
   /* --primaryWhite: #f5fafa00; */
 
   --greyDark: #495057;
