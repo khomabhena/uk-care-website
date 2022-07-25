@@ -59,7 +59,7 @@ const Navbar = ({ toggle }) => {
                     </NavItem>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to="/signin">Hire Care Workers</NavBtnLink>
+                    <NavBtnLink to="/employer-signUp">Hire Care Workers</NavBtnLink>
                 </NavBtn>
             </NavbarContainer>
         </Nav>

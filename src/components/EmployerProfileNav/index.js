@@ -1,23 +1,24 @@
 import React from 'react'
 import {FaBars} from 'react-icons/fa'
-import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './ProfileNavElements'
+import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './EmployerProfileNavElements'
 import { IconContext } from 'react-icons/lib'
 import logo from '../../images/logo-big.PNG'
 import profileIcon from '../../images/profile-icon.png'
 import { useNavigate } from 'react-router-dom'
 
-const ProfileNav = ({ selectedPage, togglePage }) => {
+const EmployerProfileNav = ({ selectedPage, togglePage }) => {
     const navigate = useNavigate()
 
     const goBack = () => {
         navigate(-1)
     }
+
   return (
     <>
     <IconContext.Provider value={{color: `var(--grey)`}}>        
     <Nav>
             <NavbarContainer>
-                <NavLogo onClick={goBack} to="/" src={logo} />
+                <NavLogo onClick={goBack} src={logo} />
                 <MobileIcon ><FaBars /></MobileIcon>
                 <NavMenu>
                     <NavItem>
@@ -64,4 +65,4 @@ const ProfileNav = ({ selectedPage, togglePage }) => {
   )
 }
 
-export default ProfileNav
+export default EmployerProfileNav
