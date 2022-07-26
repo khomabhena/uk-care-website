@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ContactContainer, ContactTitle, ContactWrap, DocumentContainer, DocumentLeft, DocumentRight, DocumentWrap, HorizontalLine, IconWrap, IconWrapOutline, Name, Profession, ProfileImage, ProfileImgWrap, SocialMediaWrap, SubTitle, Text, Title } from './ProfileInfoElements'
-import { BsFillPersonFill, BsDownload } from 'react-icons/bs'
+import { BsDownload } from 'react-icons/bs'
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa'
 import { FiTwitter, FiPhoneCall } from 'react-icons/fi'
 import { HiDocumentText } from 'react-icons/hi'
 import Img from '../../images/profile-icon.png'
+import { UserContext } from '../Context/UserContext'
 
 const ProfileInfo = () => {
+
+    const { userData } = useContext(UserContext)
+
     return (
         <>
             <ProfileImgWrap>
               <ProfileImage src={Img} />
             </ProfileImgWrap>
-            <Name>Jansh Dickens</Name>
-            <Profession>Nurse Aid</Profession>
+            <Name>{`${userData.firstName} ${userData.lastName}`}</Name>
+            <Profession>{`${userData.jobType}`}</Profession>
             <SocialMediaWrap>
               <IconWrap><FaFacebook /></IconWrap>
               <IconWrap><FiTwitter /></IconWrap>
@@ -30,7 +34,7 @@ const ProfileInfo = () => {
                   <IconWrapOutline>
                     <HiDocumentText />
                   </IconWrapOutline>
-                  <SubTitle>Resume.pdf</SubTitle>
+                  <SubTitle>{userData.resumeName}</SubTitle>
                 </DocumentLeft>
                 <DocumentRight>
                   <IconWrapOutline>
@@ -46,15 +50,15 @@ const ProfileInfo = () => {
               <Title>Contacts</Title>
               <ContactWrap>
                 <ContactTitle>Email</ContactTitle>
-                <Text>jansh@gmail.com</Text>
+                <Text>{`${userData.email}`}</Text>
               </ContactWrap>
               <ContactWrap>
                 <ContactTitle>Phone Number</ContactTitle>
-                <Text>+44 345 678 0023</Text>
+                <Text>{userData.phone}</Text>
               </ContactWrap>
               <ContactWrap>
-                <ContactTitle>Location</ContactTitle>
-                <Text>New Caledonia</Text>
+                <ContactTitle>Country</ContactTitle>
+                <Text>{userData.country}</Text>
               </ContactWrap>
             </ContactContainer>
         </>

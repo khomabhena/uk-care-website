@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../Context/UserContext';
 import { Text, SubTitle, Title } from '../ProfileInfo/ProfileInfoElements'
-import { EducationContainer, EducationDetailsWrap, EducationWrap, Language, Letter, LetterWrap, OverviewWrap, Skill, SkillsContainer, SkillsWrap } from './ProfileOverviewElements'
+import { EducationContainer, EducationDetailsWrap, EducationWrap, Language, Letter, LetterWrap, OverviewWrap, SkillsContainer, SkillsWrap } from './ProfileOverviewElements'
 
 
-const ProfileOverview = ({ selectedProfile }) => {
+const ProfileOverview = ({ data, selectedProfile }) => {
 
-    const about = "Developer with over 5 years' experience working in both the public and private sectors. Diplomatic, personable, and adept at managing sensitive situations. Highly organized, self-motivated, and proficient with computers. Looking to boost students’ satisfactions scores for International University. Bachelor's degree in communications" +
+    // const about = "Developer with over 5 years' experience working in both the public and private sectors. Diplomatic, personable, and adept at managing sensitive situations. Highly organized, self-motivated, and proficient with computers. Looking to boost students’ satisfactions scores for International University. Bachelor's degree in communications" +
 
     "It describes the candidate's relevant experience, skills, and achievements. The purpose of this career summary is to explain your qualifications for the job in 3-5 sentences and convince the manager to read the whole resume document.";
   
     const desc = "There are many variations of passages of available, but the majority alteration in some form. As a highly skilled and successfull product development and design specialist with more than 4 Years of My experience.";
 
+    const { userData } = useContext(UserContext)
 
   return (
     <OverviewWrap selectedProfile={selectedProfile}>
           <Title>About</Title>
-          <Text>{about}</Text>
+          <Text>{userData.about}</Text>
 
           
           <EducationContainer>
@@ -86,7 +88,7 @@ const ProfileOverview = ({ selectedProfile }) => {
             </EducationWrap>
           </EducationContainer>
 
-          <Title>Skills</Title>
+          {/* <Title>Skills</Title>
           <SkillsContainer>
             <SkillsWrap>
               <Skill>Cloud Management</Skill>
@@ -97,18 +99,12 @@ const ProfileOverview = ({ selectedProfile }) => {
             <SkillsWrap>
               <Skill>Home Care</Skill>
             </SkillsWrap>
-          </SkillsContainer>
+          </SkillsContainer> */}
 
           <Title>Spoken Languages</Title>
           <SkillsContainer>
             <SkillsWrap>
-              <Language>English</Language>
-            </SkillsWrap>
-            <SkillsWrap>
-              <Language>German</Language>
-            </SkillsWrap>
-            <SkillsWrap>
-              <Language>French</Language>
+              <Language>{userData.languages}</Language>
             </SkillsWrap>
           </SkillsContainer>
     </OverviewWrap>

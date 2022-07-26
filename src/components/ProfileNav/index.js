@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {FaBars} from 'react-icons/fa'
 import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './ProfileNavElements'
 import { IconContext } from 'react-icons/lib'
 import logo from '../../images/logo-big.PNG'
 import profileIcon from '../../images/profile-icon.png'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../Context/UserContext'
 
 const ProfileNav = ({ selectedPage, togglePage }) => {
     const navigate = useNavigate()
+
+    const { userData } = useContext(UserContext)
 
     const goBack = () => {
         navigate(-1)
@@ -55,7 +58,7 @@ const ProfileNav = ({ selectedPage, togglePage }) => {
                     <ImageWrap>
                         <Image src={profileIcon} />
                     </ImageWrap>
-                    <Name>Hi, Jansh</Name>
+                    <Name>Hi, {userData.firstName}</Name>
                 </RightSide>
             </NavbarContainer>
         </Nav>

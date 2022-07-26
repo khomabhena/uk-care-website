@@ -118,8 +118,8 @@ export const ImageWrap = styled.div`
 `
 
 export const Image = styled.img`
-    height: 40px;
-    width: auto;
+    height: 1.5rem;
+    width: 1.5rem;
 `
 
 export const Name = styled.p`
