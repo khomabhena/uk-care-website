@@ -13,9 +13,9 @@ const EmployerProfileInfo = () => {
             <Name>UK Care Connection</Name>
             <Profession>Since July 2017</Profession>
             <SocialMediaWrap>
-              {/* <IconWrap><FaFacebook /></IconWrap> */}
+              <IconWrap><FaFacebook /></IconWrap>
               <IconWrap><FiTwitter /></IconWrap>
-              <IconWrap><FaWhatsapp /></IconWrap>
+              {/* <IconWrap><FaWhatsapp /></IconWrap> */}
               <IconWrap><FiPhoneCall /></IconWrap>
             </SocialMediaWrap>
     

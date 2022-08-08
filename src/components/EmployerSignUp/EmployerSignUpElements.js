@@ -133,7 +133,7 @@ export const Input = styled.input`
 
 `
 
-export const LoginButton = styled(Link)`
+export const LoginButton = styled.button`
     font-size: 1rem;
     height: 40px;
     border-radius: 4px;
@@ -157,4 +157,23 @@ export const SignupButton = styled(Link)`
     text-align: center;
     color: var(--greyLight);
     cursor: pointer;
+`
+
+export const ErrorContainer = styled.div`
+    display: ${({ error }) => (error ? 'flex' : 'none')};
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--redAlpha);
+    border-radius: 8px;
+    border: 1px solid var(--red);
+    margin-top: 1rem;
+`
+
+export const ErrorMessage = styled.p`
+    color: var(--red);
+    font-size: 0.9rem;
+    padding-left: 1rem;
 `
