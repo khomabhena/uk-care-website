@@ -1,5 +1,5 @@
 import React from 'react'
-import { BottomWrap, Company, ContentWrap, FullTime, HorizontalWrap, IconWrap, JobContainer, Location, OutterContainer, Salary, Text, Title, Urgent } from './EmployerJobsElements'
+import { BottomWrap, Company, ContentWrap, FullTime, HorizontalWrap, IconWrap, JobContainer, Location, OutterContainer, Salary, Text, Title } from './EmployerJobsElements'
 import {AiOutlineEdit, AiOutlineDelete} from 'react-icons/ai'
 import { IconContext } from 'react-icons'
 
