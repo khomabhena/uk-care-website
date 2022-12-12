@@ -12,7 +12,7 @@ const ProfileUpdate = ({ selectedProfile }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        UpdateApplicant().handleUpdate()
     }
     
   return (
@@ -26,36 +26,36 @@ const ProfileUpdate = ({ selectedProfile }) => {
             <InputContainer>
                 <InputWrap>
                     <InputLabel>First Name</InputLabel>
-                    <Input placeholder='Enter your first name' value='' />
+                    <Input className='firstName' placeholder='Enter your first name' />
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>Last Name</InputLabel>
-                    <Input placeholder='Enter your last name' />
+                    <Input className='lastName' placeholder='Enter your last name' />
                 </InputWrap>
             </InputContainer>
             <InputContainer>
                 <InputWrap>
                     <InputLabel>Job Type</InputLabel>
-                    <Input smallHint='true'  placeholder='Nurse, Nurse Aid, Adult Care or Hospice Care?' />
+                    <Input className='profession' smallHint='true'  placeholder='Nurse, Nurse Aid, Adult Care or Hospice Care?' />
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>Country</InputLabel>
-                    <Input placeholder='Enter your country' />
+                    <Input className='country' placeholder='Enter your country' />
                 </InputWrap>
             </InputContainer>
             
             <Title>Profile</Title>
             <InputLabel>Introduce Yourself</InputLabel>
-            <TextArea placeholder='Write a short paragraph introducing yourself' rows='6' />
+            <TextArea className='intro' placeholder='Write a short paragraph introducing yourself' rows='6' />
 
             <InputContainer>
                 <InputWrap>
                     <InputLabel>Languages</InputLabel>
-                    <Input smallHint='true' placeholder='Separate your languages by commas!' />
+                    <Input className='languages' smallHint='true' placeholder='Separate your languages by commas!' />
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>Physical Address</InputLabel>
-                    <Input  placeholder='Enter your Address' />
+                    <Input className='address'  placeholder='Enter your Address' />
                 </InputWrap>
             </InputContainer>
             <InputLabel>Attachments CV</InputLabel>
@@ -67,22 +67,22 @@ const ProfileUpdate = ({ selectedProfile }) => {
             <InputContainer>
                 <InputWrap>
                     <InputLabel>Facebook</InputLabel>
-                    <Input placeholder='Facebook Username' />
+                    <Input className='facebook' placeholder='Facebook Username' />
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>Twitter</InputLabel>
-                    <Input placeholder='Twitter Username' />
+                    <Input className='twitter' placeholder='Twitter Username' />
                 </InputWrap>
             </InputContainer>
             
             <InputContainer>
                 <InputWrap>
                     <InputLabel>Phone</InputLabel>
-                    <Input placeholder='Enter your phone number, include country code' smallHint='true'/>
+                    <Input className='phone' placeholder='Enter your phone number, include country code' smallHint='true'/>
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>WhatsApp</InputLabel>
-                    <Input placeholder='WhatsApp number' />
+                    <Input className='whatsApp' placeholder='WhatsApp number' />
                 </InputWrap>
             </InputContainer>
 
