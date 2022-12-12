@@ -31,7 +31,7 @@ const EmployerSignUp = () => {
     const handleUploadData = async (uid) => {
         setError(false)
 
-        try {await setDoc(doc(db, "companies", uid), {
+        try {await setDoc(doc(db, "employers", localStorage.getItem('userEmail')), {
             ...data, uid: uid
           });
         navigate('/employer-profile')

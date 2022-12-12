@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { ButtonWrap, FileChooser, Image, ImageWrap, Input, InputContainer, InputLabel, InputWrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './ProfileUpdateElements'
 import Img from '../../images/profile-icon.png'
-import ProfileControls from '../../controls'
+import { ProfileControls } from '../../controls'
 
 const ProfileUpdate = ({ selectedProfile }) => {
     

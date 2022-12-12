@@ -2,7 +2,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore"
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { db } from "../Firebase"
 
-const ProfileControls = () => {
+export const ProfileControls = () => {
 
     const getData = async () => {
         const docRef = doc(db, "applicants", localStorage.getItem('userEmail'));
@@ -174,7 +174,7 @@ const ProfileControls = () => {
 
 }
 
-export default ProfileControls
+// export default ProfileControls
 
 
 

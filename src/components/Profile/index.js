@@ -9,7 +9,7 @@ import ProfileUpdate from '../ProfileUpdate'
 import { IconContext } from 'react-icons/lib'
 import Jobs from '../Jobs'
 import JobDetails from '../JobDetails'
-import ProfileControls from '../../controls'
+import { ProfileControls } from '../../controls'
 
 const Profile = () => {
 
