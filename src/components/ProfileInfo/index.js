@@ -6,6 +6,7 @@ import { FiTwitter, FiPhoneCall } from 'react-icons/fi'
 import { HiDocumentText } from 'react-icons/hi'
 import Img from '../../images/profile-icon.png'
 import { UserContext } from '../Context/UserContext'
+import '../../controls/index'
 
 const ProfileInfo = () => {
 
@@ -28,7 +29,7 @@ const ProfileInfo = () => {
             <HorizontalLine />
     
             <DocumentContainer>
-              <Title>Resume</Title>
+              <Title className='resume'>Resume</Title>
               <DocumentWrap>
                 <DocumentLeft>
                   <IconWrapOutline>

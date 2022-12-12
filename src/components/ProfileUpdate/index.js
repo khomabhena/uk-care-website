@@ -1,23 +1,20 @@
-import React, {useContext, useState} from 'react'
-import { ButtonWrap, FileChooser, Image, ImageWrap, Input, InputContainer, InputLabel, Inputwrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './ProfileUpdateElements'
+import React, {useEffect} from 'react'
+import { ButtonWrap, FileChooser, Image, ImageWrap, Input, InputContainer, InputLabel, InputWrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './ProfileUpdateElements'
 import Img from '../../images/profile-icon.png'
-import { UserContext } from '../Context/UserContext'
-import { doc, updateDoc } from "firebase/firestore"
-import { db } from '../../Firebase'
+import UpdateApplicant from './myjs'
 
 const ProfileUpdate = ({ selectedProfile }) => {
+    
+    useEffect(() => {
+        const applicant = UpdateApplicant()
+        applicant.setEventListeners()
+    }, [])
 
-    const { userData, setUserData } = useContext(UserContext)
-
-    const handleUpdate = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
 
-        const washingtonRef = doc(db, 'users', userData.uid);
-            await updateDoc(washingtonRef, {
-            ...userData
-        });
-
     }
+    
   return (
     <ProfileUpdateContainer selectedProfile={selectedProfile}>
         <Title>My Account</Title>
@@ -25,72 +22,72 @@ const ProfileUpdate = ({ selectedProfile }) => {
             <Image src={Img} />
         </ImageWrap>
 
-        <UpdateForm onSubmit={handleUpdate}>
+        <UpdateForm onSubmit={handleSubmit}>
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>First Name</InputLabel>
-                    <Input placeholder='Enter your first name' value={userData.firstName} onChange={(e) => setUserData(prev => ({...prev, firstName: e.target.value})) } />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input placeholder='Enter your first name' value='' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Last Name</InputLabel>
-                    <Input placeholder='Enter your last name' value={userData.lastName} onChange={(e) => setUserData(prev => ({...prev, lastName: e.target.value})) } />
-                </Inputwrap>
+                    <Input placeholder='Enter your last name' />
+                </InputWrap>
             </InputContainer>
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Job Type</InputLabel>
-                    <Input smallHint='true' value={userData.jobType} onChange={(e) => setUserData(prev => ({...prev, jobType: e.target.value})) } placeholder='Nurse, Nurse Aid, Adult Care or Hospice Care?' />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input smallHint='true'  placeholder='Nurse, Nurse Aid, Adult Care or Hospice Care?' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Country</InputLabel>
-                    <Input value={userData.country} onChange={(e) => setUserData(prev => ({...prev, country: e.target.value})) } placeholder='Enter your country' />
-                </Inputwrap>
+                    <Input placeholder='Enter your country' />
+                </InputWrap>
             </InputContainer>
             
             <Title>Profile</Title>
             <InputLabel>Introduce Yourself</InputLabel>
-            <TextArea value={userData.about} onChange={(e) => setUserData(prev => ({...prev, about: e.target.value})) } placeholder='Write a short paragraph introducing yourself' rows='6' />
+            <TextArea placeholder='Write a short paragraph introducing yourself' rows='6' />
 
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Languages</InputLabel>
-                    <Input value={userData.languages} onChange={(e) => setUserData(prev => ({...prev, languages: e.target.value})) } smallHint='true' placeholder='Separate your languages by commas!' />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input smallHint='true' placeholder='Separate your languages by commas!' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Physical Address</InputLabel>
-                    <Input value={userData.address} onChange={(e) => setUserData(prev => ({...prev, address: e.target.value})) } placeholder='Enter your Address' />
-                </Inputwrap>
+                    <Input  placeholder='Enter your Address' />
+                </InputWrap>
             </InputContainer>
-            <InputLabel>Attachements CV</InputLabel>
-            <FileChooser type='file' />
+            <InputLabel>Attachments CV</InputLabel>
+            <FileChooser className='cv' type='file' />
             <InputLabel>National ID/Passport</InputLabel>
-            <FileChooser type='file' />
+            <FileChooser className='id' type='file' />
 
             <Title>Social Media</Title>
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Facebook</InputLabel>
-                    <Input placeholder='Facebook Username' value={userData.facebook} onChange={(e) => setUserData(prev => ({...prev, facebook: e.target.value})) } />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input placeholder='Facebook Username' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Twitter</InputLabel>
-                    <Input placeholder='Twitter Username' value={userData.twitter} onChange={(e) => setUserData(prev => ({...prev, twitter: e.target.value})) } />
-                </Inputwrap>
+                    <Input placeholder='Twitter Username' />
+                </InputWrap>
             </InputContainer>
             
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Phone</InputLabel>
-                    <Input placeholder='Enter your phone number, include country code' smallHint='true' value={userData.phone} onChange={(e) => setUserData(prev => ({...prev, phone: e.target.value})) } />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input placeholder='Enter your phone number, include country code' smallHint='true'/>
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>WhatsApp</InputLabel>
-                    <Input placeholder='WhatsApp number' value={userData.whatsapp} onChange={(e) => setUserData(prev => ({...prev, whatsapp: e.target.value})) } />
-                </Inputwrap>
+                    <Input placeholder='WhatsApp number' />
+                </InputWrap>
             </InputContainer>
 
             <ButtonWrap>
-                <UpdateButton type='submit'>Update</UpdateButton>
+                <UpdateButton className="applicant-update" type='submit'>Update</UpdateButton>
             </ButtonWrap>
            
         </UpdateForm>

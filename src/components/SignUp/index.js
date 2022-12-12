@@ -31,7 +31,7 @@ const SignUp = () => {
     const handleUploadData = async (uid) => {
         setError(false)
 
-        try {await setDoc(doc(db, "users", uid), {
+        try {await setDoc(doc(db, "applicants", data.email), {
             ...data, uid: uid
           });
         navigate('/profile')
