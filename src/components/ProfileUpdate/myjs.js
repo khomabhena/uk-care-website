@@ -1,6 +1,6 @@
 import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
 import { auth, db } from '../../Firebase'
-import { doc, setDoc, updateDoc } from "firebase/firestore"; 
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore"; 
 import { async } from '@firebase/util';
 
 const UpdateApplicant = () => {
@@ -119,11 +119,35 @@ const UpdateApplicant = () => {
     }
 
     const handleUpdate = async() => {
-        uploadFiles()
-       
+        uploadFiles()   
     }
 
-    return { setEventListeners, handleUpdate }
+    const getData = async () => {
+        const docRef = doc(db, "applicants", localStorage.getItem('userEmail'));
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+            setData(docSnap.data())
+        } else {
+            return { }
+        }
+    }
+
+    const setData = (data) => {
+        document.querySelector('.firstName').value = data.firstName
+        document.querySelector('.lastName').value = data.lastName
+        document.querySelector('.profession').value = data.profession
+        document.querySelector('.country').value = data.country
+        document.querySelector('.intro').value = data.intro
+        document.querySelector('.languages').value = data.languages
+        document.querySelector('.address').value = data.address
+        document.querySelector('.facebook').value = data.facebook
+        document.querySelector('.twitter').value = data.twitter
+        document.querySelector('.phone').value = data.phone
+        document.querySelector('.whatsApp').value = data.whatsApp
+    }
+
+    return { setEventListeners, handleUpdate, getData }
 }
 
 export default UpdateApplicant

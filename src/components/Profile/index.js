@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileNav from '../ProfileNav'
 import { 
   HorizontalLine, JobsContainer, LeftSide, 
@@ -9,36 +9,22 @@ import ProfileUpdate from '../ProfileUpdate'
 import { IconContext } from 'react-icons/lib'
 import Jobs from '../Jobs'
 import JobDetails from '../JobDetails'
-import { doc, getDoc } from "firebase/firestore";
-import { db } from '../../Firebase'
-import { AuthContext } from '../Context/AuthContext'
-import { UserContext } from '../Context/UserContext'
+import ProfileControls from '../../controls'
 
 const Profile = () => {
 
-  const { userUid } = useContext(AuthContext)
   const [selectedPage, setPage] = useState('profile');
   const [selectedProfile, setProfile] = useState('overview');
   const [selectedJobPage, setJobPage] = useState('jobs');
-  const { userData, setUserData } = useContext(UserContext)
-
-  
 
   useEffect(() => {
-      loadData()
-  }, [])
-
-  const loadData = async() => {
-    const docRef = doc(db, "users", userUid);
-    const docSnap = await getDoc(docRef);
+    const profileControls = ProfileControls()
     
-    if (docSnap.exists()) {
-      const res = docSnap.data()
-      setUserData(prev => ({...prev, ...res}))
-    } else {
-        console.log("No such document!");
-    }
-  }
+    profileControls.Nav().setNavName()
+    profileControls.Info().setInfoDetails()
+    profileControls.Overview().setIntro()
+    profileControls.Update().setInitialValues()
+  }, [])
 
   const togglePage = (id) => {
       setPage(id)

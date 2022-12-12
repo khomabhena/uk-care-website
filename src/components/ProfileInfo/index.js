@@ -1,24 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import { ContactContainer, ContactTitle, ContactWrap, DocumentContainer, DocumentLeft, DocumentRight, DocumentWrap, HorizontalLine, IconWrap, IconWrapOutline, Name, Profession, ProfileImage, ProfileImgWrap, SocialMediaWrap, SubTitle, Text, Title } from './ProfileInfoElements'
 import { BsDownload } from 'react-icons/bs'
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa'
 import { FiTwitter, FiPhoneCall } from 'react-icons/fi'
 import { HiDocumentText } from 'react-icons/hi'
 import Img from '../../images/profile-icon.png'
-import { UserContext } from '../Context/UserContext'
-import '../../controls/index'
+import ProfileInformation from './myJs'
 
 const ProfileInfo = () => {
-
-    const { userData } = useContext(UserContext)
 
     return (
         <>
             <ProfileImgWrap>
               <ProfileImage src={Img} />
             </ProfileImgWrap>
-            <Name>{`${userData.firstName} ${userData.lastName}`}</Name>
-            <Profession>{`${userData.jobType}`}</Profession>
+            <Name className="info-name"></Name>
+            <Profession className="info-profession"></Profession>
             <SocialMediaWrap>
               <IconWrap><FaFacebook /></IconWrap>
               <IconWrap><FiTwitter /></IconWrap>
@@ -29,13 +26,13 @@ const ProfileInfo = () => {
             <HorizontalLine />
     
             <DocumentContainer>
-              <Title className='resume'>Resume</Title>
+              <Title className='info-resume'>Resume</Title>
               <DocumentWrap>
                 <DocumentLeft>
                   <IconWrapOutline>
                     <HiDocumentText />
                   </IconWrapOutline>
-                  <SubTitle>{userData.resumeName}</SubTitle>
+                  <SubTitle className="info-cv"></SubTitle>
                 </DocumentLeft>
                 <DocumentRight>
                   <IconWrapOutline>
@@ -51,15 +48,15 @@ const ProfileInfo = () => {
               <Title>Contacts</Title>
               <ContactWrap>
                 <ContactTitle>Email</ContactTitle>
-                <Text>{`${userData.email}`}</Text>
+                <Text className="info-email"></Text>
               </ContactWrap>
               <ContactWrap>
                 <ContactTitle>Phone Number</ContactTitle>
-                <Text>{userData.phone}</Text>
+                <Text className="info-phone"></Text>
               </ContactWrap>
               <ContactWrap>
                 <ContactTitle>Country</ContactTitle>
-                <Text>{userData.country}</Text>
+                <Text className="info-country"></Text>
               </ContactWrap>
             </ContactContainer>
         </>
