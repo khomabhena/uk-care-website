@@ -9,7 +9,7 @@ import ProfileUpdate from '../ProfileUpdate'
 import { IconContext } from 'react-icons/lib'
 import Jobs from '../Jobs'
 import JobDetails from '../JobDetails'
-import { ProfileControls } from '../../controls'
+import { ApplicantControls } from '../../controls'
 
 const Profile = () => {
 
@@ -18,12 +18,12 @@ const Profile = () => {
   const [selectedJobPage, setJobPage] = useState('jobs');
 
   useEffect(() => {
-    const profileControls = ProfileControls()
+    const applicantControls = ApplicantControls()
     
-    profileControls.Nav().setNavName()
-    profileControls.Info().setInfoDetails()
-    profileControls.Overview().setIntro()
-    profileControls.Update().setInitialValues()
+    applicantControls.Nav().setNavName()
+    applicantControls.Info().setInfoDetails()
+    applicantControls.Overview().setIntro()
+    applicantControls.Update().setInitialValues()
   }, [])
 
   const togglePage = (id) => {

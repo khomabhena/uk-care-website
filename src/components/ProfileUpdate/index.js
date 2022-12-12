@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { ButtonWrap, FileChooser, Image, ImageWrap, Input, InputContainer, InputLabel, InputWrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './ProfileUpdateElements'
 import Img from '../../images/profile-icon.png'
-import { ProfileControls } from '../../controls'
+import { ApplicantControls } from '../../controls'
 
 const ProfileUpdate = ({ selectedProfile }) => {
     
@@ -14,7 +14,7 @@ const ProfileUpdate = ({ selectedProfile }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log('Kholwani');
-        ProfileControls().Update().uploadFiles()
+        ApplicantControls().Update().uploadFiles()
     }
     
   return (
