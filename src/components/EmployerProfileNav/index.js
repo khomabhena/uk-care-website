@@ -1,16 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import {FaBars} from 'react-icons/fa'
 import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './EmployerProfileNavElements'
 import { IconContext } from 'react-icons/lib'
 import logo from '../../images/logo-big.PNG'
 import profileIcon from '../../images/profile-icon.png'
 import { useNavigate } from 'react-router-dom'
-import { CompanyContext } from '../Context/CompanyContext'
 
 const EmployerProfileNav = ({ selectedPage, togglePage }) => {
     const navigate = useNavigate()
-
-    const { companyData } = useContext(CompanyContext)
 
     const goBack = () => {
         navigate(-1)
@@ -47,7 +44,7 @@ const EmployerProfileNav = ({ selectedPage, togglePage }) => {
                     <ImageWrap>
                         <Image src={profileIcon} />
                     </ImageWrap>
-                    <Name>{companyData.companyName}</Name>
+                    <Name className='nav-company'></Name>
                 </RightSide>
             </NavbarContainer>
         </Nav>

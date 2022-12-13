@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { 
   HorizontalLine, JobsContainer, JobsCreate, LeftSide, 
   NavWrap, Overview, ProfileContainer, RightSide, Update } from './EmployerProfileElements' 
@@ -9,36 +9,21 @@ import JobDetails from '../JobDetails'
 import EmployerProfileInfo from '../EmployerProfileInfo'
 import EmployerProfileNav from '../EmployerProfileNav'
 import EmployerJobs from '../EmployerJobs'
-import { AuthContext } from '../Context/AuthContext'
-import { CompanyContext } from '../Context/CompanyContext'
-import { doc, getDoc } from 'firebase/firestore'
-import { db } from '../../Firebase'
+import { EmployerControls } from '../../controls'
 
 const EmployerProfile = () => {
 
-    const { userUid } = useContext(AuthContext)
     const [selectedPage, setPage] = useState('profile');
     const [selectedProfile, setProfile] = useState('overview');
     const [selectedJobPage, setJobPage] = useState('jobs');
-    const { companyData, setCompanyData } = useContext(CompanyContext)
 
     useEffect(() => {
-        loadData()
+        const employerControls = EmployerControls()
+        employerControls.Nav().setNavName()
+        employerControls.Info().setInfoDetails()
     }, [])
 
-    const loadData = async () => {
-      const docRef = doc(db, "companies", userUid);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        const res = docSnap.data();
-        setCompanyData(prev => ({...prev, ...res}))
-        console.log(companyData)
-      } else {
-        console.log("No such document")
-      }
-    }
-
+    
     function togglePage(id) {
         setPage(id)
     }

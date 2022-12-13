@@ -1,75 +1,86 @@
-import React from 'react'
-import { ButtonWrap, FileChooser, Image, ImageIcon, ImageWrap, Input, InputContainer, InputLabel, Inputwrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './EmployerProfileUpdateElements'
-import { BsFillPersonFill } from 'react-icons/bs'
-import Img from '../../images/profile-icon.png'
+import React, { useEffect } from 'react'
+import { EmployerControls } from '../../controls'
+import { ButtonWrap, FileChooser, Input, InputContainer, InputLabel, InputWrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './EmployerProfileUpdateElements'
 
 const EmployerProfileUpdate = ({ selectedProfile }) => {
+
+    useEffect(() => {
+
+    }, [])
+
+    const handleUpdate = (e) => {
+        e.preventDefault()
+        EmployerControls().Update().uploadToFireStore()
+        // console.log('Updating')
+    }
+
   return (
     <ProfileUpdateContainer selectedProfile={selectedProfile}>
         <Title>My Account</Title>
 
-        <UpdateForm>
+        <UpdateForm onSubmit={handleUpdate}>
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Company Name</InputLabel>
-                    <Input placeholder='Enter your company name' />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input className='companyName' placeholder='Enter your company name' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Owner Name</InputLabel>
-                    <Input placeholder='Enter your name' />
-                </Inputwrap>
+                    <Input className='name' placeholder='Enter your name' />
+                </InputWrap>
             </InputContainer>
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Location</InputLabel>
-                    <Input placeholder='Where are you located?' />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input className='country' placeholder='Where are you located?' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Employees</InputLabel>
-                    <Input placeholder='Number of employees' />
-                </Inputwrap>
+                    <Input className='employees' placeholder='Number of employees' />
+                </InputWrap>
             </InputContainer>
             
             <Title>About</Title>
             <InputLabel>About your company</InputLabel>
-            <TextArea placeholder='Write a short paragraph introducing your company' rows='6' />
+            <TextArea className='intro' placeholder='Write a short paragraph introducing your company' rows='6' />
 
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Registration Number</InputLabel>
-                    <Input placeholder='Enter your company registration number' />
-                </Inputwrap>
+                    <Input className='registrationNumber' placeholder='Enter your company registration number' />
+                </InputWrap>
             </InputContainer>
             <InputLabel>National ID / Passport</InputLabel>
-            <FileChooser type='file' />
+            <FileChooser className='id' type='file' />
 
             <Title>Social Media</Title>
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Twitter</InputLabel>
-                    <Input />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input className='twitter' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Phone Number</InputLabel>
-                    <Input />
-                </Inputwrap>
+                    <Input className='phone' />
+                </InputWrap>
             </InputContainer>
             
             <InputContainer>
-                <Inputwrap>
+                <InputWrap>
                     <InputLabel>Linkedin</InputLabel>
-                    <Input />
-                </Inputwrap>
-                <Inputwrap>
+                    <Input className='linkedin' />
+                </InputWrap>
+                <InputWrap>
                     <InputLabel>Website</InputLabel>
-                    <Input />
-                </Inputwrap>
+                    <Input className='website' />
+                </InputWrap>
             </InputContainer>
+            <ButtonWrap>
+                <UpdateButton type='submit'>Update</UpdateButton>
+            </ButtonWrap>
+
         </UpdateForm>
 
-        <ButtonWrap>
-            <UpdateButton>Update</UpdateButton>
-        </ButtonWrap>
         
     </ProfileUpdateContainer>
   )

@@ -47,7 +47,7 @@ export const InputContainer = styled.div`
     }
 `
 
-export const Inputwrap = styled.div`
+export const InputWrap = styled.div`
     display: flex;
     flex-direction: column;
     flex: 50%;

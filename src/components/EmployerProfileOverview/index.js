@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { AuthContext } from '../Context/AuthContext';
 import { CompanyContext } from '../Context/CompanyContext';
 import EmployerJobs from '../EmployerJobs';
-import { FileChooser, Input, InputContainer, InputLabel, Inputwrap, TextArea, UpdateForm } from '../EmployerProfileUpdate/EmployerProfileUpdateElements';
+import { FileChooser, Input, InputContainer, InputLabel, InputWrap, TextArea, UpdateForm } from '../EmployerProfileUpdate/EmployerProfileUpdateElements';
 import JobDetails from '../JobDetails';
 import Jobs from '../Jobs';
 import { JobsContainer } from '../Profile/ProfileElements';
@@ -51,7 +51,7 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
   return (
     <OverviewWrap selectedProfile={selectedProfile}>
           <Title>About Company</Title>
-          <Text>{about}</Text>
+          <Text className='overview-about'></Text>
 
           <HorizontalWrap>
             <JobTitle>{title}</JobTitle>
@@ -67,24 +67,24 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
           <CreateJobContainer createJob={createJob}>
             <UpdateForm onSubmit={handleJobPost}>
               <InputContainer>
-                  <Inputwrap>
+                  <InputWrap>
                       <InputLabel>Job Title</InputLabel>
                       <Input placeholder="What's the job title"  onChange={(e) => setJobPost(prev => ({...prev, title: e.target.value}))}/>
-                  </Inputwrap>
-                  <Inputwrap>
+                  </InputWrap>
+                  <InputWrap>
                       <InputLabel>Expected Salary per Month</InputLabel>
                       <Input placeholder='Enter the expected salary per month' onChange={(e) => setJobPost(prev => ({...prev, salary: e.target.value}))} />
-                  </Inputwrap>
+                  </InputWrap>
               </InputContainer>
               <InputContainer>
-                  <Inputwrap>
+                  <InputWrap>
                       <InputLabel>Location</InputLabel>
                       <Input placeholder='Where is the job located?' onChange={(e) => setJobPost(prev => ({...prev, location: e.target.value}))} />
-                  </Inputwrap>
-                  <Inputwrap>
+                  </InputWrap>
+                  <InputWrap>
                       <InputLabel>Job Type</InputLabel>
                       <Input placeholder='Full Time or Part Time' onChange={(e) => setJobPost(prev => ({...prev, type: e.target.value}))} />
-                  </Inputwrap>
+                  </InputWrap>
               </InputContainer>
               
               <InputLabel>Job Description</InputLabel>
