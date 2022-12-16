@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { EmployerControls } from '../../controls';
 import EmployerJobs from '../EmployerJobs';
 import { Input, InputContainer, InputLabel, InputWrap, TextArea, UpdateForm } from '../EmployerProfileUpdate/EmployerProfileUpdateElements';
 import { Title, Text, OverviewWrap, JobTitle, JobContainer, HorizontalWrap, NewJob, CreateJobContainer, UpdateButton } from './EmployerProfileOverviewElements'
@@ -25,6 +26,7 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
 
     const handleJobPost = (e) => {
       e.preventDefault()
+      EmployerControls().Job().uploadJob()
     }
 
   return (
@@ -48,26 +50,26 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
               <InputContainer>
                   <InputWrap>
                       <InputLabel>Job Title</InputLabel>
-                      <Input placeholder="What's the job title" />
+                      <Input className='title' placeholder="What's the job title" />
                   </InputWrap>
                   <InputWrap>
                       <InputLabel>Expected Salary per Month</InputLabel>
-                      <Input placeholder='Enter the expected salary per month' />
+                      <Input className='salary' placeholder='Enter the expected salary per month' />
                   </InputWrap>
               </InputContainer>
               <InputContainer>
                   <InputWrap>
                       <InputLabel>Location</InputLabel>
-                      <Input placeholder='Where is the job located?' />
+                      <Input className='country' placeholder='Where is the job located?' />
                   </InputWrap>
                   <InputWrap>
                       <InputLabel>Job Type</InputLabel>
-                      <Input placeholder='Full Time or Part Time' />
+                      <Input className='profession' placeholder='Nurse, Nurse Aid, Adult Care' />
                   </InputWrap>
               </InputContainer>
               
               <InputLabel>Job Description</InputLabel>
-              <TextArea placeholder='Write a short paragraph describing the job' rows='6' />
+              <TextArea className='description' placeholder='Write a short paragraph describing the job' rows='6' />
               <UpdateButton type='submit'>Create new Job</UpdateButton>
             </UpdateForm>
           </CreateJobContainer>

@@ -1,6 +1,77 @@
-import { doc, getDoc, updateDoc } from "firebase/firestore"
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import { addDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
+import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { db } from "../Firebase"
+
+export const FirebaseStorage = () => {
+
+    const uploadFile = async (folderPath, file) => {
+        const storage = getStorage()
+        const storageRef = ref(storage, folderPath + "/" + file.name)
+        const uploadTask = await uploadBytes(storageRef, file)
+        let downloadUrl = ''
+
+       await uploadTask.on('state_changed', 
+       (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            console.log('Upload is ' + progress + '% done')
+            switch (snapshot.state) {
+                case 'paused':
+                    console.log('Upload is paused')
+                    break
+                case 'running':
+                    console.log('Upload is running');
+                    break;
+                default:
+                    console.log('')
+            }
+       },
+       (error) => {
+            switch (error.code) {
+                case 'storage/unauthorized':
+                    console.log('User does not have permission to access storage')
+                    break
+                case 'storage/canceled':
+                    console.log('User canceled the upload')
+                    break
+                default:
+                    break;
+            }
+       },
+       () => {
+            downloadUrl = getDownloadURL(uploadTask.snapshot.ref).then((url) => url)
+       })
+
+       return downloadUrl
+    }
+
+    const deleteFile = async (folderPath, fileName) => {
+        const storage = getStorage()
+        const storageRef = ref(storage, folderPath + "/" + fileName)
+
+        deleteObject(storageRef).then(() => {
+            console.log("File has been deleted")
+        }).catch((error) => {
+            console.log('An error occurred while deleting')
+        })
+    }
+
+    const setData = () => {
+
+    }
+
+    const getData = () => {
+
+    }
+
+    const updateData = () => {
+
+    }
+
+    const addData = () => {
+
+    }
+
+}
 
 export function ApplicantControls() {
 
@@ -305,8 +376,46 @@ export const EmployerControls = () => {
         return { setInfoDetails };
     }
 
-    return { Nav, Update, Info }
+    const Job = () => {
+
+        const getFormData = () => {
+            const title = document.querySelector('.title').value
+            const salary = document.querySelector('.salary').value
+            const country = document.querySelector('.country').value
+            const profession = document.querySelector('.profession').value
+            const description = document.querySelector('.description').value
+
+            return {
+                title,
+                salary,
+                country,
+                profession,
+                description
+            }
+        }
+
+        const uploadJob = async () => {
+            console.log('Uploading Job');
+            const data = getFormData()
+
+            try {
+                await addDoc(doc(db, "jobs", localStorage.getItem('userEmail')),
+                    {
+                        ...data
+                    }
+                )
+
+            } catch (e) {
+                
+            }
+        }
+        
+        return { uploadJob }
+    }
+
+    return { Nav, Update, Info, Job }
 } 
+
 
 
 
