@@ -5,8 +5,6 @@ import { IconContext } from 'react-icons/lib'
 import logo from '../../images/logo-big.PNG'
 import profileIcon from '../../images/profile-icon.png'
 import { useNavigate } from 'react-router-dom'
-import ProfileNavigation from './myJs'
-import ProfileControls from '../../controls'
 
 const ProfileNav = ({ selectedPage, togglePage }) => {
 

@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { ContactContainer, ContactTitle, ContactWrap, DocumentContainer, DocumentLeft, DocumentRight, DocumentWrap, HorizontalLine, IconWrap, IconWrapOutline, Name, Profession, ProfileImage, ProfileImgWrap, SocialMediaWrap, SubTitle, Text, Title } from './ProfileInfoElements'
 import { BsDownload } from 'react-icons/bs'
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa'
 import { FiTwitter, FiPhoneCall } from 'react-icons/fi'
 import { HiDocumentText } from 'react-icons/hi'
 import Img from '../../images/profile-icon.png'
-import ProfileInformation from './myJs'
 
 const ProfileInfo = () => {
 

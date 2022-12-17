@@ -60,8 +60,6 @@ const SignUp = () => {
                     handleUploadData(user.uid)
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMsg = error.message;
                     setError(true)
                     setErrorMessage('Account with this Email already exists!!')
                     // ..

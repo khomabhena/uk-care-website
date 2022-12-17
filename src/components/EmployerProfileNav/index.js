@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {FaBars} from 'react-icons/fa'
 import { Image, ImageWrap, MobileIcon, Name, Nav, NavbarContainer, NavItem, NavLinks, NavLogo, NavMenu, RightSide } from './EmployerProfileNavElements'
 import { IconContext } from 'react-icons/lib'

@@ -1,7 +1,6 @@
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage'
-import { auth, db } from '../../Firebase'
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore"; 
-import { async } from '@firebase/util';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
+import { db } from '../../Firebase'
+import { doc, getDoc, updateDoc } from "firebase/firestore"; 
 
 const UpdateApplicant = () => {
 

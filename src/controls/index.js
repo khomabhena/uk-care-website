@@ -1,5 +1,4 @@
-import { async } from "@firebase/util";
-import { addDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
+import { addDoc, doc, getDoc, updateDoc } from "firebase/firestore"
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { db } from "../Firebase"
 
