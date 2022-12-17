@@ -1,8 +1,48 @@
+import { async } from "@firebase/util";
 import { addDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { db } from "../Firebase"
 
 export const FirebaseStorage = () => {
+
+    const setData = async (path, id, data) => {
+        const res = await db.collection(path).doc(id).set(data)
+
+        return res.id
+    }
+
+    const addData = async (path, data) => {
+        const res = await db.collection(path).doc()
+        const id = res.id
+
+        res.add(data)
+
+        return id
+    }
+
+    const updateData = async (path, id, data) => {
+        const res = await db.collection(path).doc(id).update(data)
+
+        return res
+    }
+
+    const getData = async (path, id) => {
+        const res = await db.collection(path).doc(id).get()
+
+        if (res.exists)
+            return res
+        else 
+            {}
+    }
+
+    const getDataWhere = async (path, id, data, key, value) => {
+        const res = await db.collection(path).where(key, '==', value).get()
+
+        if (res.empty) 
+            return res
+        else
+            {}
+    } 
 
     const uploadFile = async (folderPath, file) => {
         const storage = getStorage()
@@ -55,22 +95,7 @@ export const FirebaseStorage = () => {
         })
     }
 
-    const setData = () => {
-
-    }
-
-    const getData = () => {
-
-    }
-
-    const updateData = () => {
-
-    }
-
-    const addData = () => {
-
-    }
-
+    return { setData, getData, updateData, addData, uploadFile, deleteFile, getDataWhere }
 }
 
 export function ApplicantControls() {
