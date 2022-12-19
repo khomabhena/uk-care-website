@@ -8,14 +8,15 @@ const ProfileOverview = ({ data, selectedProfile }) => {
 
     // "It describes the candidate's relevant experience, skills, and achievements. The purpose of this career summary is to explain your qualifications for the job in 3-5 sentences and convince the manager to read the whole resume document.";
   
-    const desc = "There are many variations of passages of available, but the majority alteration in some form. As a highly skilled and successfull product development and design specialist with more than 4 Years of My experience.";
+    // const desc = "There are many variations of passages of available, but the majority alteration in some form. As a highly skilled and successfull product development and design specialist with more than 4 Years of My experience.";
 
-    const [languages, setLanguages] = useState([])
+    const [dataObj, setData] = useState([])
 
     useEffect(() => {
       async function getData() {
         const data = await FirebaseStorage().getData('applicants', localStorage.getItem('userEmail'))
-        setLanguages(data.languages)
+        setData(data)
+        console.table(data)
       }
 
       getData()
@@ -29,89 +30,48 @@ const ProfileOverview = ({ data, selectedProfile }) => {
           
           <EducationContainer>
           <Title>Education</Title>
-            <EducationWrap>          
-              <LetterWrap>
-                  <Letter>B</Letter>
-              </LetterWrap>
-              <EducationDetailsWrap>
-                <SubTitle>BCA - Bachelor of Nursing</SubTitle>
-                <Text>International University - (2000 - 2004)</Text>
-                <Text>{desc}</Text>
-              </EducationDetailsWrap>
-            </EducationWrap>
-            <EducationWrap>          
-              <LetterWrap>
-                  <Letter>M</Letter>
-              </LetterWrap>
-              <EducationDetailsWrap>
-                <SubTitle>MCA - Master of Computer Application</SubTitle>
-                <Text>International University - (2010 - 2012)</Text>
-                <Text>{desc}</Text>
-              </EducationDetailsWrap>
-            </EducationWrap>
-            <EducationWrap>          
-              <LetterWrap>
-                  <Letter>D</Letter>
-              </LetterWrap>
-              <EducationDetailsWrap>
-                <SubTitle>Design Communication Visual</SubTitle>
-                <Text>International University - (2012 - 2015)</Text>
-                <Text>{desc}</Text>
-              </EducationDetailsWrap>
-            </EducationWrap>
+              {
+                dataObj['qualifications'].map((item, index) => {
+                  return (
+                      <EducationWrap key={index}>
+                        <LetterWrap>
+                            <Letter>{item.degree.charAt(0)}</Letter>
+                        </LetterWrap>
+                        <EducationDetailsWrap>
+                          <SubTitle>{item.degree}</SubTitle>
+                          <Text>{item.institution} - ({item.yearStart.substring(0, 4)} - {item.yearEnd.substring(0, 4)})</Text>
+                          <Text>{item.intro}</Text>
+                        </EducationDetailsWrap>
+                      </EducationWrap>
+                  )
+                })
+              }
           </EducationContainer>
 
           <Title>Experiences</Title>
           <EducationContainer>
-            <EducationWrap>          
-              <LetterWrap>
-                  <Letter>W</Letter>
-              </LetterWrap>
-              <EducationDetailsWrap>
-                <SubTitle>Web Design &amp; Development Team</SubTitle>
-                <Text>Creative Agency - (2013 -2016)</Text>
-                <Text>{desc}</Text>
-              </EducationDetailsWrap>
-            </EducationWrap>
-            <EducationWrap>          
-              <LetterWrap>
-                  <Letter>P</Letter>
-              </LetterWrap>
-              <EducationDetailsWrap>
-                <SubTitle>Project Manager</SubTitle>
-                <Text>EU Care Home (2016 - Present)</Text>
-                <Text>{desc}</Text>
-              </EducationDetailsWrap>
-            </EducationWrap>
-            <EducationWrap>          
-              <LetterWrap>
-                  <Letter>D</Letter>
-              </LetterWrap>
-              <EducationDetailsWrap>
-                <SubTitle>Design Communication Visual</SubTitle>
-                <Text>International University - (2012 - 2015)</Text>
-                <Text>{desc}</Text>
-              </EducationDetailsWrap>
-            </EducationWrap>
+            {
+              dataObj['experience'].map((item, index) => {
+                  return (
+                    <EducationWrap>          
+                      <LetterWrap>
+                          <Letter>{item.title.charAt(0)}</Letter>
+                      </LetterWrap>
+                      <EducationDetailsWrap>
+                        <SubTitle>{item.title}</SubTitle>
+                        <Text>{item.company} - ({item.yearStart.substring(0, 4)} -{item.yearEnd.substring(0, 4)})</Text>
+                        <Text>{item.intro}</Text>
+                      </EducationDetailsWrap>
+                    </EducationWrap>
+                  )
+              })
+            }
           </EducationContainer>
-
-          {/* <Title>Skills</Title>
-          <SkillsContainer>
-            <SkillsWrap>
-              <Skill>Cloud Management</Skill>
-            </SkillsWrap>
-            <SkillsWrap>
-              <Skill>Responsive Design</Skill>
-            </SkillsWrap>
-            <SkillsWrap>
-              <Skill>Home Care</Skill>
-            </SkillsWrap>
-          </SkillsContainer> */}
 
           <Title>Spoken Languages</Title>
           <SkillsContainer>
             {
-              languages.map((item, index) => {
+              dataObj['languages'].map((item, index) => {
                 return (
                   <SkillsWrap key={index}>
                     <Language className='overview-languages'>{item}</Language>
