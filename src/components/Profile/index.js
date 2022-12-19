@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ProfileNav from '../ProfileNav'
 import { 
+  Experience,
   HorizontalLine, JobsContainer, LeftSide, 
-  NavWrap, Overview, ProfileContainer, RightSide, Update } from './ProfileElements'
+  NavWrap, Overview, ProfileContainer, Qualifications, RightSide, Update } from './ProfileElements'
 import ProfileInfo from '../ProfileInfo' 
 import ProfileOverview from '../ProfileOverview'
 import ProfileUpdate from '../ProfileUpdate'
@@ -10,6 +11,8 @@ import { IconContext } from 'react-icons/lib'
 import Jobs from '../Jobs'
 import JobDetails from '../JobDetails'
 import { ApplicantControls } from '../../controls'
+import ProfileQualifications from '../ProfileQualifications'
+import ProfileExperience from '../ProfileExperience'
 
 const Profile = () => {
 
@@ -46,10 +49,15 @@ const Profile = () => {
           <NavWrap>
             <Overview onClick={() => setProfile('overview')} selectedProfile={selectedProfile}>Overview</Overview>
             <Update onClick={() => setProfile('update')} selectedProfile={selectedProfile}>Update</Update>
+            <Qualifications onClick={() => setProfile('qualifications')} selectedProfile={selectedProfile}>Qualifications</Qualifications>
+            <Experience onClick={() => setProfile('experience')} selectedProfile={selectedProfile}>Experience</Experience>
           </NavWrap>
           <HorizontalLine />
           <ProfileOverview selectedProfile={selectedProfile} />
           <ProfileUpdate selectedProfile={selectedProfile} />
+          <ProfileQualifications selectedProfile={selectedProfile} />
+          <ProfileExperience selectedProfile={selectedProfile} />
+
         </RightSide>
       </ProfileContainer>
 

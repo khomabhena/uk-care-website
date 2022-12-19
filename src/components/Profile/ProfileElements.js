@@ -122,6 +122,38 @@ export const Update = styled.h4`
     }
 `
 
+export const Qualifications = styled.h4`
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem 1rem;
+    border-bottom: ${({ selectedProfile }) => (selectedProfile === 'qualifications' ? `2px solid var(--primary)` : `none`)};
+    color: ${({ selectedProfile }) => (selectedProfile === 'qualifications' ? `var(--primary)`: `var(--grey)`)};
+    cursor: pointer;
+
+    &:hover {
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+    }
+`
+
+export const Experience = styled.h4`
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem 1rem;
+    border-bottom: ${({ selectedProfile }) => (selectedProfile === 'experience' ? `2px solid var(--primary)` : `none`)};
+    color: ${({ selectedProfile }) => (selectedProfile === 'experience' ? `var(--primary)`: `var(--grey)`)};
+    cursor: pointer;
+
+    &:hover {
+        color: var(--primary);
+        border-bottom: 2px solid var(--primary);
+    }
+`
+
 
 
 // Jobs Container
