@@ -111,10 +111,10 @@ const ProfileOverview = ({ data, selectedProfile }) => {
           <Title>Spoken Languages</Title>
           <SkillsContainer>
             {
-              languages.map(item => {
+              languages.map((item, index) => {
                 return (
-                  <SkillsWrap>
-                    <Language key={item} className='overview-languages'>{item}</Language>
+                  <SkillsWrap key={index}>
+                    <Language className='overview-languages'>{item}</Language>
                   </SkillsWrap>
                 )
               })

@@ -190,7 +190,65 @@ export function ApplicantControls() {
         return { setInitialValues, uploadData };
     };
 
-    return { getData, Nav, Info, Overview, Update };
+    const Qualifications = () => {
+
+        const getFormData = () => {
+            const degree = document.querySelector('.q-degree').value
+            const institution = document.querySelector('.q-institution').value
+            const yearStart = document.querySelector('.q-yearStart').value
+            const yearEnd = document.querySelector('.q-yearEnd').value
+            const intro = document.querySelector('.q-intro').value
+        
+            return {
+                degree, institution, yearStart, yearEnd, intro
+            }
+        }
+
+        const uploadData = async () => {
+            const data = await FirebaseStorage().getData(APPLICANTS, EMAIL)
+            const formData = getFormData()
+
+            let qualifications = await data.qualifications
+            if (qualifications === undefined) {
+                qualifications = []
+            }
+            qualifications.push(formData)
+            FirebaseStorage().updateData(APPLICANTS, EMAIL, {qualifications})
+        }
+
+        return { uploadData }
+    }
+
+    const Experience = () => {
+
+        const getFormData = () => {
+            const title = document.querySelector('.ex-title').value
+            const company = document.querySelector('.ex-company').value
+            const yearStart = document.querySelector('.ex-yearStart').value
+            const yearEnd = document.querySelector('.ex-yearEnd').value
+            const intro = document.querySelector('.ex-intro').value
+        
+            return {
+                title, company, yearStart, yearEnd, intro
+            }
+        }
+
+        const uploadData = async () => {
+            const data = await FirebaseStorage().getData(APPLICANTS, EMAIL)
+            const formData = getFormData()
+
+            let experience = await data.experience
+            if (experience === undefined) {
+                experience = []
+            }
+            experience.push(formData)
+            FirebaseStorage().updateData(APPLICANTS, EMAIL, {experience})
+        }
+
+        return { uploadData }
+    }
+
+    return { getData, Nav, Info, Overview, Update, Qualifications, Experience };
 
 }
 
