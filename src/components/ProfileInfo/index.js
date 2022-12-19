@@ -11,7 +11,7 @@ const ProfileInfo = () => {
     return (
         <>
             <ProfileImgWrap>
-              <ProfileImage src={Img} />
+              <ProfileImage className='info-profile' src={Img} />
             </ProfileImgWrap>
             <Name className="info-name"></Name>
             <Profession className="info-profession"></Profession>

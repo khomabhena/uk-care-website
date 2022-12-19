@@ -1,28 +1,21 @@
 import React, {useEffect} from 'react'
 import { ButtonWrap, FileChooser, Image, ImageWrap, Input, InputContainer, InputLabel, InputWrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './ProfileUpdateElements'
 import Img from '../../images/profile-icon.png'
-import { ApplicantControls } from '../../controls'
+import { ApplicantControls, FirebaseStorage } from '../../controls'
 
 const ProfileUpdate = ({ selectedProfile }) => {
     
     useEffect(() => {
-        // const applicant = UpdateApplicant()
-        // applicant.setEventListeners()
-        // applicant.getData()
     }, [])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('Kholwani');
-        ApplicantControls().Update().uploadFiles()
+        ApplicantControls().Update().uploadData()
     }
     
   return (
     <ProfileUpdateContainer selectedProfile={selectedProfile}>
         <Title>My Account</Title>
-        <ImageWrap>
-            <Image src={Img} />
-        </ImageWrap>
 
         <UpdateForm onSubmit={handleSubmit}>
             <InputContainer>
@@ -45,6 +38,8 @@ const ProfileUpdate = ({ selectedProfile }) => {
                     <Input className='country' placeholder='Enter your country' />
                 </InputWrap>
             </InputContainer>
+            <InputLabel>Upload Profile Picture</InputLabel>
+            <FileChooser className='profile' type='file' />
             
             <Title>Profile</Title>
             <InputLabel>Introduce Yourself</InputLabel>

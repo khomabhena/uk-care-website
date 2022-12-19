@@ -2,22 +2,24 @@ import { addDoc, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "fir
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { db } from "../Firebase"
 
+const APPLICANTS = 'applicants'
+const EMPLOYERS = 'employers'
+const EMAIL = localStorage.getItem('userEmail')
+
 export const FirebaseStorage = () => {
 
     const setData = async (path, id, data) => {
         await setDoc(doc(db, path, id), data)
-        .then(() => true)
-        .catch(() => false)
     }
 
     const addData = async (path, data) => {
-        const res = await addDoc(collection(db, path), data)
+        await addDoc(collection(db, path), data)
 
     }
 
     const updateData = async (path, id, data) => {
         const ref = doc(db, path, id)
-        const res = await updateDoc(ref, data)
+        await updateDoc(ref, data)
     }
 
     const getData = async (path, id) => {
@@ -36,12 +38,15 @@ export const FirebaseStorage = () => {
         return snapshot
     }
 
-    const uploadFile = async (folderPath, file) => {
+    const uploadFile = async (folderPath, file, path, id, data, dUrl, name) => {
         const storage = getStorage()
         const storageRef = ref(storage, folderPath + "/" + file.name)
-        
-        uploadBytes(storageRef, file).then((snapshot) => {
-            return true
+
+        await uploadBytes(storageRef, file).then((snapshot) => {
+            getDownloadURL(storageRef).then((url) => {
+                updateData(path, id, {...data, [dUrl]: url, [name]: file.name})
+                return url
+            })
         })
     }
 
@@ -89,10 +94,11 @@ export function ApplicantControls() {
 
             document.querySelector('.info-name').textContent = data.firstName + " " + data.lastName;
             document.querySelector('.info-profession').textContent = data.profession;
-            document.querySelector('.info-cv').textContent = "my resume";
+            document.querySelector('.info-cv').textContent = data.cv;
             document.querySelector('.info-email').textContent = data.email;
             document.querySelector('.info-phone').textContent = data.phone;
             document.querySelector('.info-country').textContent = data.country;
+            document.querySelector('.info-profile').src = data.profileUrl;
         };
 
         return { setInfoDetails };
@@ -104,7 +110,7 @@ export function ApplicantControls() {
             const data = await getData();
 
             document.querySelector('.overview-intro').textContent = data.intro;
-            document.querySelector('.overview-languages').textContent = data.languages;
+            // document.querySelector('.overview-languages').textContent = data.languages;
         };
 
         return { setIntro };
@@ -115,17 +121,20 @@ export function ApplicantControls() {
         const setInitialValues = async () => {
             const data = await getData();
 
-            document.querySelector('.firstName').value = data.firstName;
-            document.querySelector('.lastName').value = data.lastName;
-            document.querySelector('.profession').value = data.profession;
-            document.querySelector('.country').value = data.country;
-            document.querySelector('.intro').value = data.intro;
-            document.querySelector('.languages').value = data.languages;
-            document.querySelector('.address').value = data.address;
-            document.querySelector('.facebook').value = data.facebook;
-            document.querySelector('.twitter').value = data.twitter;
-            document.querySelector('.phone').value = data.phone;
-            document.querySelector('.whatsApp').value = data.whatsApp;
+            document.querySelector('.firstName').value = data.firstName || ''
+            document.querySelector('.lastName').value = data.lastName || ''
+            document.querySelector('.profession').value = data.profession || ''
+            document.querySelector('.country').value = data.country || ''
+            document.querySelector('.intro').value = data.intro || ''
+            document.querySelector('.languages').value = data.languages || ''
+            document.querySelector('.address').value = data.address || ''
+            document.querySelector('.facebook').value = data.facebook || ''
+            document.querySelector('.twitter').value = data.twitter || ''
+            document.querySelector('.phone').value = data.phone || ''
+            document.querySelector('.whatsApp').value = data.whatsApp || ''
+            document.querySelector('.cv').name = data.cv || ''
+            document.querySelector('.id').name = data.id || ''
+            document.querySelector('.profile').name = data.profile || ''
         };
 
         const getFormData = () => {
@@ -134,9 +143,8 @@ export function ApplicantControls() {
             const profession = document.querySelector('.profession').value;
             const country = document.querySelector('.country').value;
             const intro = document.querySelector('.intro').value;
-            const languages = document.querySelector('.languages').value;
+            const languages = document.querySelector('.languages').value.split(',');
             const address = document.querySelector('.address').value;
-            // const cvUrl = document.querySelector('.cv').files[0]
             const facebook = document.querySelector('.facebook').value;
             const twitter = document.querySelector('.twitter').value;
             const phone = document.querySelector('.phone').value;
@@ -158,73 +166,28 @@ export function ApplicantControls() {
         };
 
         const getFiles = () => {
-            const cvFile = document.querySelector('.cv').files[0];
-            const idFile = document.querySelector('.id').files[0];
+            const fileCV = document.querySelector('.cv').files[0];
+            const fileID = document.querySelector('.id').files[0];
+            const fileProfilePicture = document.querySelector('.profile').files[0];
 
             return {
-                cvFile, idFile
+                fileCV, fileID, fileProfilePicture
             };
         };
 
-        const uploadFiles = async () => {
-            const { cvFile, idFile } = getFiles();
-            let cvUrl = '';
-            let idUrl = '';
+        const uploadData = async () => {
+            const { fileCV, fileID, fileProfilePicture  } = getFiles();
+            const data = await getFormData()
 
-            const storage = getStorage();
-
-            const storageRefCV = ref(storage, `${localStorage.getItem('userEmail')}/${cvFile.name}`);
-            const storageRefId = ref(storage, `${localStorage.getItem('userEmail')}/${idFile.name}`);
-
-            const uploadTaskCV = await uploadBytesResumable(storageRefCV, cvFile);
-            const uploadTaskID = await uploadBytesResumable(storageRefId, idFile);
-
-            uploadTaskCV.on(
-                "state_changed",
-                (snapshot) => {
-                    const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-                    console.log(`CV Percent: ${percent}`);
-                },
-                (err) => console.log(err),
-                () => {
-                    getDownloadURL(uploadTaskCV.snapshot.ref).then((url) => {
-                        cvUrl = url;
-                        console.log(url);
-                        uploadToFireStore({ cvUrl, idUrl });
-                    });
-                }
-            );
-
-            uploadTaskID.on(
-                "state_changed",
-                (snapshot) => {
-                    const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-
-                    console.log(`CV Percent: ${percent}`);
-                },
-                (err) => console.log(err),
-                () => {
-                    getDownloadURL(uploadTaskID.snapshot.ref).then((url) => {
-                        idUrl = url;
-                        console.log(url);
-                        uploadToFireStore({ cvUrl, idUrl });
-                    });
-                }
-            );
-
-            return { cvUrl, idUrl };
+            if (fileCV !== undefined) FirebaseStorage().uploadFile(EMAIL, fileCV, APPLICANTS, EMAIL, data, 'cvUrl', 'cv')
+            if (fileID !== undefined) FirebaseStorage().uploadFile(EMAIL, fileID, APPLICANTS, EMAIL, data, 'idUrl', 'id')
+            if (fileProfilePicture !== undefined) FirebaseStorage().uploadFile(EMAIL, fileProfilePicture, APPLICANTS, EMAIL, data, 'profileUrl', 'profile')
+            
+            FirebaseStorage().updateData(APPLICANTS, EMAIL, data)
         };
 
-        const uploadToFireStore = async ({ cvUrl, idUrl }) => {
-            const washingtonRef = await doc(db, 'applicants', localStorage.getItem('userEmail'));
-            await updateDoc(washingtonRef, {
-                ...getFormData(), cvUrl, idUrl
-            });
 
-        };
-
-        return { setInitialValues, uploadFiles };
+        return { setInitialValues, uploadData };
     };
 
     return { getData, Nav, Info, Overview, Update };

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, SubTitle, Title } from '../ProfileInfo/ProfileInfoElements'
 import { EducationContainer, EducationDetailsWrap, EducationWrap, Language, Letter, LetterWrap, OverviewWrap, SkillsContainer, SkillsWrap } from './ProfileOverviewElements'
+import { ApplicantControls, FirebaseStorage } from '../../controls'
 
 const ProfileOverview = ({ data, selectedProfile }) => {
     // const about = "Developer with over 5 years' experience working in both the public and private sectors. Diplomatic, personable, and adept at managing sensitive situations. Highly organized, self-motivated, and proficient with computers. Looking to boost students’ satisfactions scores for International University. Bachelor's degree in communications" +
@@ -8,6 +9,17 @@ const ProfileOverview = ({ data, selectedProfile }) => {
     // "It describes the candidate's relevant experience, skills, and achievements. The purpose of this career summary is to explain your qualifications for the job in 3-5 sentences and convince the manager to read the whole resume document.";
   
     const desc = "There are many variations of passages of available, but the majority alteration in some form. As a highly skilled and successfull product development and design specialist with more than 4 Years of My experience.";
+
+    const [languages, setLanguages] = useState([])
+
+    useEffect(() => {
+      async function getData() {
+        const data = await FirebaseStorage().getData('applicants', localStorage.getItem('userEmail'))
+        setLanguages(data.languages)
+      }
+
+      getData()
+    }, [])
 
   return (
     <OverviewWrap selectedProfile={selectedProfile}>
@@ -98,9 +110,15 @@ const ProfileOverview = ({ data, selectedProfile }) => {
 
           <Title>Spoken Languages</Title>
           <SkillsContainer>
-            <SkillsWrap>
-              <Language className='overview-languages'></Language>
-            </SkillsWrap>
+            {
+              languages.map(item => {
+                return (
+                  <SkillsWrap>
+                    <Language key={item} className='overview-languages'>{item}</Language>
+                  </SkillsWrap>
+                )
+              })
+            }
           </SkillsContainer>
     </OverviewWrap>
   )

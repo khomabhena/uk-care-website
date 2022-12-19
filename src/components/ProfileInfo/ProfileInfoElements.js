@@ -2,18 +2,20 @@ import styled from "styled-components";
 
 export const ProfileImgWrap = styled.div`
     margin-top: 2rem;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 2rem;
+    width: 102px;
+    height: 102px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--greyLight);
+    border: 2px solid var(--greyLight);
     
 `
 export const ProfileImage = styled.img`
-    width: 3rem;
-    height: 3rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 `
 
 export const Name = styled.h3`

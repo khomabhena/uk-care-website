@@ -33,17 +33,11 @@ const SignUp = () => {
         setError(false)
 
         try {
-        //     await setDoc(doc(db, "applicants", data.email), {
-        //     ...data, uid: uid
-        //   });
-        
-        const res = await FirebaseStorage().setData('applicants', data.email, {...data, uid: uid})
-        console.log("Res: " + res)
-        // navigate('/profile')
+            await FirebaseStorage().setData('applicants', data.email, {...data, uid: uid})
+            navigate('/profile')
         } catch (e) {
             setError(true)
             setErrorMessage(e.message)
-            console.log(e.message)
         }
     } 
 
