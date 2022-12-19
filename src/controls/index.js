@@ -92,13 +92,14 @@ export function ApplicantControls() {
         const setInfoDetails = async () => {
             const data = await getData();
 
-            document.querySelector('.info-name').textContent = data.firstName + " " + data.lastName;
-            document.querySelector('.info-profession').textContent = data.profession;
-            document.querySelector('.info-cv').textContent = data.cv;
-            document.querySelector('.info-email').textContent = data.email;
-            document.querySelector('.info-phone').textContent = data.phone;
-            document.querySelector('.info-country').textContent = data.country;
-            document.querySelector('.info-profile').src = data.profileUrl;
+            document.querySelector('.info-name').textContent = data.firstName + " " + data.lastName
+            document.querySelector('.info-profession').textContent = data.profession
+            document.querySelector('.info-cv').textContent = data.cv
+            document.querySelector('.info-email').textContent = data.email
+            document.querySelector('.info-phone').textContent = data.phone
+            document.querySelector('.info-country').textContent = data.country
+            document.querySelector('.info-profile').src = data.profileUrl
+            document.querySelector('.info-download-resume').href = data.cvUrl
         };
 
         return { setInfoDetails };

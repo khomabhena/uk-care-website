@@ -87,6 +87,8 @@ export const IconWrapOutline = styled.div`
     margin-right: 1rem;
 `
 
+export const IconWrapA = styled.a``
+
 export const ContactContainer = styled.div`
     margin-top: 1rem;
     width: 100%;

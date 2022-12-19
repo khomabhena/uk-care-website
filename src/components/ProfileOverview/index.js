@@ -16,7 +16,6 @@ const ProfileOverview = ({ data, selectedProfile }) => {
       async function getData() {
         const data = await FirebaseStorage().getData('applicants', localStorage.getItem('userEmail'))
         setData(data)
-        console.table(data)
       }
 
       getData()
@@ -31,7 +30,7 @@ const ProfileOverview = ({ data, selectedProfile }) => {
           <EducationContainer>
           <Title>Education</Title>
               {
-                dataObj['qualifications'].map((item, index) => {
+                dataObj['qualifications']?.map((item, index) => {
                   return (
                       <EducationWrap key={index}>
                         <LetterWrap>
@@ -51,9 +50,9 @@ const ProfileOverview = ({ data, selectedProfile }) => {
           <Title>Experiences</Title>
           <EducationContainer>
             {
-              dataObj['experience'].map((item, index) => {
+              dataObj['experience']?.map((item, index) => {
                   return (
-                    <EducationWrap>          
+                    <EducationWrap key={index}>          
                       <LetterWrap>
                           <Letter>{item.title.charAt(0)}</Letter>
                       </LetterWrap>
@@ -71,7 +70,7 @@ const ProfileOverview = ({ data, selectedProfile }) => {
           <Title>Spoken Languages</Title>
           <SkillsContainer>
             {
-              dataObj['languages'].map((item, index) => {
+              dataObj['languages']?.map((item, index) => {
                 return (
                   <SkillsWrap key={index}>
                     <Language className='overview-languages'>{item}</Language>

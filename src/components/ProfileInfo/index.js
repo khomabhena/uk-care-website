@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContactContainer, ContactTitle, ContactWrap, DocumentContainer, DocumentLeft, DocumentRight, DocumentWrap, HorizontalLine, IconWrap, IconWrapOutline, Name, Profession, ProfileImage, ProfileImgWrap, SocialMediaWrap, SubTitle, Text, Title } from './ProfileInfoElements'
+import { ContactContainer, ContactTitle, ContactWrap, DocumentContainer, DocumentLeft, DocumentRight, DocumentWrap, HorizontalLine, IconWrap, IconWrapA, IconWrapOutline, Name, Profession, ProfileImage, ProfileImgWrap, SocialMediaWrap, SubTitle, Text, Title } from './ProfileInfoElements'
 import { BsDownload } from 'react-icons/bs'
 import { FaFacebook, FaWhatsapp } from 'react-icons/fa'
 import { FiTwitter, FiPhoneCall } from 'react-icons/fi'
@@ -34,9 +34,11 @@ const ProfileInfo = () => {
                   <SubTitle className="info-cv"></SubTitle>
                 </DocumentLeft>
                 <DocumentRight>
-                  <IconWrapOutline>
-                    <BsDownload />
-                  </IconWrapOutline>
+                  <IconWrapA className='info-download-resume' download>
+                    <IconWrapOutline>
+                      <BsDownload />
+                    </IconWrapOutline>
+                  </IconWrapA>
                 </DocumentRight>
               </DocumentWrap>
             </DocumentContainer>
