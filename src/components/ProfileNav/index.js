@@ -60,7 +60,7 @@ const ProfileNav = ({ selectedPage, togglePage }) => {
                 </NavMenu>
                 <RightSide>
                     <ImageWrap>
-                        <Image src={profileIcon} />
+                        <Image className='nav-image' src={profileIcon} />
                     </ImageWrap>
                     <Name className='nav-name'></Name>
                 </RightSide>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { EmployerControls } from '../../controls'
-import { ButtonWrap, FileChooser, Input, InputContainer, InputLabel, InputWrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './EmployerProfileUpdateElements'
+import { ButtonWrap, FileChooser, Input, InputContainer, InputLabel, InputWrap, Option, ProfileUpdateContainer, Select, TextArea, Title, UpdateButton, UpdateForm } from './EmployerProfileUpdateElements'
 
 const EmployerProfileUpdate = ({ selectedProfile }) => {
 
@@ -36,7 +36,14 @@ const EmployerProfileUpdate = ({ selectedProfile }) => {
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>Employees</InputLabel>
-                    <Input className='employees' placeholder='Number of employees' />
+                    {/* <Input className='employees' placeholder='Number of employees' /> */}
+                    <Select className='employees' name='employees'>
+                        <Option value='None' disabled selected>Select number of Employees</Option>
+                        <Option value='1 to 5'>1 to 9</Option>
+                        <Option value='5 to 10'>10 to 29</Option>
+                        <Option value='10 to 50'>30 to 50</Option>
+                        <Option value='Over 50'>Over 50</Option>
+                    </Select>
                 </InputWrap>
             </InputContainer>
             

@@ -118,8 +118,10 @@ export const ImageWrap = styled.div`
 `
 
 export const Image = styled.img`
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 `
 
 export const Name = styled.p`

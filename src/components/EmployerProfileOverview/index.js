@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { EmployerControls } from '../../controls';
 import EmployerJobs from '../EmployerJobs';
-import { Input, InputContainer, InputLabel, InputWrap, TextArea, UpdateForm } from '../EmployerProfileUpdate/EmployerProfileUpdateElements';
+import { Input, InputContainer, InputLabel, InputWrap, Option, Select, TextArea, UpdateForm } from '../EmployerProfileUpdate/EmployerProfileUpdateElements';
 import { Title, Text, OverviewWrap, JobTitle, JobContainer, HorizontalWrap, NewJob, CreateJobContainer, UpdateButton } from './EmployerProfileOverviewElements'
 
 
@@ -64,7 +64,14 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
                   </InputWrap>
                   <InputWrap>
                       <InputLabel>Job Type</InputLabel>
-                      <Input className='profession' placeholder='Nurse, Nurse Aid, Adult Care' />
+                      {/* <Input className='profession' placeholder='Nurse, Nurse Aid, Adult Care' /> */}
+                      <Select className='profession' name='profession'>
+                        <Option value='None' disabled selected>Select job type</Option>
+                        <Option value='Nurse'>Nurse</Option>
+                        <Option value='Nurse Aid'>Nurse Aid</Option>
+                        <Option value='Adult Care'>Adult Care</Option>
+                        <Option value='Hospice Care'>Hospice Care</Option>
+                    </Select>
                   </InputWrap>
               </InputContainer>
               

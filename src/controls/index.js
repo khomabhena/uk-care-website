@@ -82,6 +82,7 @@ export function ApplicantControls() {
         const setNavName = async () => {
             const data = await getData();
             document.querySelector('.nav-name').textContent = "Hi, " + data.firstName;
+            document.querySelector('.nav-image').src = data.profileUrl
         };
 
         return { setNavName };

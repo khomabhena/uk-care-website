@@ -78,6 +78,28 @@ export const Input = styled.input`
     }
 `
 
+export const Select = styled.select`
+    padding: 0.5rem 2rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--greyLight);
+    margin-right: 1rem;
+    color: var(--greyDark);
+    font-size: 1rem;
+
+    :focus {
+        outline: none;
+        border: 1px solid var(--primary);
+    }
+
+    ::placeholder {
+        color: var(--greyLight);
+        font-size: ${({ smallHint }) => (smallHint ? '0.8rem' : '1rem')};
+    }
+`
+
+export const Option = styled.option``
+
 export const TextArea = styled.textarea`
     padding: 0.5rem 2rem;
     border-radius: 4px;

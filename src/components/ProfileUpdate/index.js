@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { ButtonWrap, FileChooser, Image, ImageWrap, Input, InputContainer, InputLabel, InputWrap, ProfileUpdateContainer, TextArea, Title, UpdateButton, UpdateForm } from './ProfileUpdateElements'
+import { ButtonWrap, FileChooser, Image, ImageWrap, Input, InputContainer, InputLabel, InputWrap, Option, ProfileUpdateContainer, Select, TextArea, Title, UpdateButton, UpdateForm } from './ProfileUpdateElements'
 import Img from '../../images/profile-icon.png'
 import { ApplicantControls, FirebaseStorage } from '../../controls'
 
@@ -31,7 +31,14 @@ const ProfileUpdate = ({ selectedProfile }) => {
             <InputContainer>
                 <InputWrap>
                     <InputLabel>Job Type</InputLabel>
-                    <Input className='profession' smallHint='true'  placeholder='Nurse, Nurse Aid, Adult Care or Hospice Care?' />
+                    {/* <Input className='profession' smallHint='true'  placeholder='Nurse, Nurse Aid, Adult Care or Hospice Care?' /> */}
+                    <Select className='profession' name='profession'>
+                        <Option value='None' disabled selected>Select job type</Option>
+                        <Option value='Nurse'>Nurse</Option>
+                        <Option value='Nurse Aid'>Nurse Aid</Option>
+                        <Option value='Adult Care'>Adult Care</Option>
+                        <Option value='Hospice Care'>Hospice Care</Option>
+                    </Select>
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>Country</InputLabel>
