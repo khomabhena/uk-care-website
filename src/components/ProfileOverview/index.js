@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Text, SubTitle, Title } from '../ProfileInfo/ProfileInfoElements'
 import { EducationContainer, EducationDetailsWrap, EducationWrap, Language, Letter, LetterWrap, OverviewWrap, SkillsContainer, SkillsWrap } from './ProfileOverviewElements'
-import { ApplicantControls, FirebaseStorage } from '../../controls'
+import { FirebaseStorage } from '../../controls'
 
 const ProfileOverview = ({ data, selectedProfile }) => {
     // const about = "Developer with over 5 years' experience working in both the public and private sectors. Diplomatic, personable, and adept at managing sensitive situations. Highly organized, self-motivated, and proficient with computers. Looking to boost students’ satisfactions scores for International University. Bachelor's degree in communications" +
