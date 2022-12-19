@@ -1,86 +1,48 @@
-import { addDoc, doc, getDoc, updateDoc } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore"
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { db } from "../Firebase"
 
 export const FirebaseStorage = () => {
 
     const setData = async (path, id, data) => {
-        const res = await db.collection(path).doc(id).set(data)
-
-        return res.id
+        await setDoc(doc(db, path, id), data)
+        .then(() => true)
+        .catch(() => false)
     }
 
     const addData = async (path, data) => {
-        const res = await db.collection(path).doc()
-        const id = res.id
+        const res = await addDoc(collection(db, path), data)
 
-        res.add(data)
-
-        return id
     }
 
     const updateData = async (path, id, data) => {
-        const res = await db.collection(path).doc(id).update(data)
-
-        return res
+        const ref = doc(db, path, id)
+        const res = await updateDoc(ref, data)
     }
 
     const getData = async (path, id) => {
-        const res = await db.collection(path).doc(id).get()
+        const ref = doc(db, path, id)
+        const snapshot = await getDoc(ref)
 
-        if (res.exists)
-            return res
+        if (snapshot.exists)
+            return snapshot.data()
         else 
-            {}
+            return {}
     }
 
-    const getDataWhere = async (path, id, data, key, value) => {
-        const res = await db.collection(path).where(key, '==', value).get()
-
-        if (res.empty) 
-            return res
-        else
-            {}
-    } 
+    const getAllData = async (path) => {
+        const snapshot = await getDocs(collection(db, path))
+        
+        return snapshot
+    }
 
     const uploadFile = async (folderPath, file) => {
         const storage = getStorage()
         const storageRef = ref(storage, folderPath + "/" + file.name)
-        const uploadTask = await uploadBytes(storageRef, file)
-        let downloadUrl = ''
-
-       await uploadTask.on('state_changed', 
-       (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            console.log('Upload is ' + progress + '% done')
-            switch (snapshot.state) {
-                case 'paused':
-                    console.log('Upload is paused')
-                    break
-                case 'running':
-                    console.log('Upload is running');
-                    break;
-                default:
-                    console.log('')
-            }
-       },
-       (error) => {
-            switch (error.code) {
-                case 'storage/unauthorized':
-                    console.log('User does not have permission to access storage')
-                    break
-                case 'storage/canceled':
-                    console.log('User canceled the upload')
-                    break
-                default:
-                    break;
-            }
-       },
-       () => {
-            downloadUrl = getDownloadURL(uploadTask.snapshot.ref).then((url) => url)
-       })
-
-       return downloadUrl
+        
+        uploadBytes(storageRef, file).then((snapshot) => {
+            return true
+        })
     }
 
     const deleteFile = async (folderPath, fileName) => {
@@ -88,13 +50,13 @@ export const FirebaseStorage = () => {
         const storageRef = ref(storage, folderPath + "/" + fileName)
 
         deleteObject(storageRef).then(() => {
-            console.log("File has been deleted")
+            return true
         }).catch((error) => {
-            console.log('An error occurred while deleting')
+            return false
         })
     }
 
-    return { setData, getData, updateData, addData, uploadFile, deleteFile, getDataWhere }
+    return { setData, getData, getAllData, updateData, addData, uploadFile, deleteFile }
 }
 
 export function ApplicantControls() {
