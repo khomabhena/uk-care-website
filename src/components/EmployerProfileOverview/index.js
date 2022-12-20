@@ -77,7 +77,7 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
                   <InputWrap>
                       <InputLabel>Job Type</InputLabel>
                       {/* <Input className='profession' placeholder='Nurse, Nurse Aid, Adult Care' /> */}
-                      <Select className='profession' name='profession'>
+                      <Select className='job-profession' name='job-profession'>
                         <Option value='None' disabled defaultValue>Select job type</Option>
                         <Option value='Nurse'>Nurse</Option>
                         <Option value='Nurse Aid'>Nurse Aid</Option>

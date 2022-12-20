@@ -392,7 +392,7 @@ export const EmployerControls = () => {
             const title = document.querySelector('.title').value
             const salary = document.querySelector('.salary').value
             const country = document.querySelector('.country').value
-            const profession = document.querySelector('.profession').value
+            const profession = document.querySelector('.job-profession').value
             const description = document.querySelector('.description').value
 
             return {
