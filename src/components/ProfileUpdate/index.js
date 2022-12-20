@@ -33,7 +33,7 @@ const ProfileUpdate = ({ selectedProfile }) => {
                     <InputLabel>Job Type</InputLabel>
                     {/* <Input className='profession' smallHint='true'  placeholder='Nurse, Nurse Aid, Adult Care or Hospice Care?' /> */}
                     <Select className='profession' name='profession'>
-                        <Option value='None' disabled selected>Select job type</Option>
+                        <Option value='None' disabled defaultValue>Select job type</Option>
                         <Option value='Nurse'>Nurse</Option>
                         <Option value='Nurse Aid'>Nurse Aid</Option>
                         <Option value='Adult Care'>Adult Care</Option>

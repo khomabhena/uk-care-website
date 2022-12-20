@@ -4,6 +4,7 @@ import { db } from "../Firebase"
 
 const APPLICANTS = 'applicants'
 const EMPLOYERS = 'employers'
+const JOBS = 'jobs'
 const EMAIL = localStorage.getItem('userEmail')
 
 export const FirebaseStorage = () => {
@@ -404,19 +405,20 @@ export const EmployerControls = () => {
         }
 
         const uploadJob = async () => {
-            console.log('Uploading Job');
-            const data = getFormData()
+            const data = await FirebaseStorage().getData(JOBS, EMAIL)
+            const formData = getFormData()
 
-            try {
-                await addDoc(doc(db, "jobs", localStorage.getItem('userEmail')),
-                    {
-                        ...data
-                    }
-                )
-
-            } catch (e) {
-                
+            let jobs = data
+            if (jobs === undefined) {
+                jobs = []
+                jobs.push(formData)
+                FirebaseStorage().setData(JOBS, EMAIL, {jobs: jobs})
+            } else {
+                const job = data.jobs
+                job.push(formData)
+                FirebaseStorage().updateData(JOBS, EMAIL, {jobs: job})
             }
+            
         }
         
         return { uploadJob }

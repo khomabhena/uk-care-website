@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { EmployerControls } from '../../controls';
+import { useEffect } from 'react';
+import { EmployerControls, FirebaseStorage } from '../../controls';
 import EmployerJobs from '../EmployerJobs';
 import { Input, InputContainer, InputLabel, InputWrap, Option, Select, TextArea, UpdateForm } from '../EmployerProfileUpdate/EmployerProfileUpdateElements';
 import { Title, Text, OverviewWrap, JobTitle, JobContainer, HorizontalWrap, NewJob, CreateJobContainer, UpdateButton } from './EmployerProfileOverviewElements'
@@ -10,6 +11,17 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
     // const about = "Provider of hospice services. The company's services include nursing visits, medical professional assistance, pain and symptom management, medications, equipment and supplies, spiritual counseling and bereavement follow up, and home health aide services, enabling chronically ill patients to get over their emotional and spiritual needs.\n\n" +
     //               "Industries in the Nursing and Residential Care Facilities subsector provide residential care combined with either nursing, supervisory, or other types of care as required by the residents. In this subsector, the facilities are a significant part of the production process, and the care provided is a mix of health and social services with the health services being largely some level of nursing services.";
 
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const res = await FirebaseStorage().getData('jobs', localStorage.getItem('userEmail'))
+
+            setData(res)
+        }
+
+        getData()
+    }, [])
 
     const [createJob, setCreateJob] = useState(false);
     const [buttonName, setButtonName] = useState('Create new Job');
@@ -41,7 +53,7 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
 
           {/* Current Openings */}
           <JobContainer createJob={createJob}>
-            <EmployerJobs />
+            <EmployerJobs data={data} />
           </JobContainer>
 
           {/* Creating New Job */}
@@ -66,7 +78,7 @@ const EmployerProfileOverview = ({ selectedProfile }) => {
                       <InputLabel>Job Type</InputLabel>
                       {/* <Input className='profession' placeholder='Nurse, Nurse Aid, Adult Care' /> */}
                       <Select className='profession' name='profession'>
-                        <Option value='None' disabled selected>Select job type</Option>
+                        <Option value='None' disabled defaultValue>Select job type</Option>
                         <Option value='Nurse'>Nurse</Option>
                         <Option value='Nurse Aid'>Nurse Aid</Option>
                         <Option value='Adult Care'>Adult Care</Option>

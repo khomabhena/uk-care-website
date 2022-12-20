@@ -38,7 +38,7 @@ const EmployerProfileUpdate = ({ selectedProfile }) => {
                     <InputLabel>Employees</InputLabel>
                     {/* <Input className='employees' placeholder='Number of employees' /> */}
                     <Select className='employees' name='employees'>
-                        <Option value='None' disabled selected>Select number of Employees</Option>
+                        <Option value='None' disabled defaultValue>Select number of Employees</Option>
                         <Option value='1 to 5'>1 to 9</Option>
                         <Option value='5 to 10'>10 to 29</Option>
                         <Option value='10 to 50'>30 to 50</Option>
