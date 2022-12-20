@@ -258,7 +258,7 @@ export function ApplicantControls() {
 export const EmployerControls = () => {
 
     const getData = async () => {
-        const docRef = doc(db, "employers", localStorage.getItem('userEmail'));
+        const docRef = doc(db, EMPLOYERS, EMAIL);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
