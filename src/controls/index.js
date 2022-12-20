@@ -65,7 +65,7 @@ export const FirebaseStorage = () => {
     return { setData, getData, getAllData, updateData, addData, uploadFile, deleteFile }
 }
 
-export function ApplicantControls() {
+export const ApplicantControls = () => {
 
     const getData = async () => {
         const docRef = doc(db, "applicants", localStorage.getItem('userEmail'));
