@@ -9,7 +9,7 @@ import { Title, Text, OverviewWrap, JobTitle, JobContainer, HorizontalWrap, NewJ
 const EmployerProfileOverview = ({ selectedProfile }) => {
 
     // const about = "Provider of hospice services. The company's services include nursing visits, medical professional assistance, pain and symptom management, medications, equipment and supplies, spiritual counseling and bereavement follow up, and home health aide services, enabling chronically ill patients to get over their emotional and spiritual needs.\n\n" +
-    //               "Industries in the Nursing and Residential Care Facilities subsector provide residential care combined with either nursing, supervisory, or other types of care as required by the residents. In this subsector, the facilities are a significant part of the production process, and the care provided is a mix of health and social services with the health services being largely some level of nursing services.";
+    //               "Industries in the Nursing and Residential Care Facilities sub-sector provide residential care combined with either nursing, supervisory, or other types of care as required by the residents. In this subsector, the facilities are a significant part of the production process, and the care provided is a mix of health and social services with the health services being largely some level of nursing services.";
 
     const [data, setData] = useState([])
 

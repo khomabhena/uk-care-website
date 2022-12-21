@@ -14,6 +14,7 @@ import JobDetails from '../JobDetails'
 import { ApplicantControls } from '../../controls'
 import ProfileQualifications from '../ProfileQualifications'
 import ProfileExperience from '../ProfileExperience'
+import JobApplications from '../JobApplications'
 
 const Profile = () => {
 
@@ -67,7 +68,7 @@ const Profile = () => {
         <Wrapper>
             <TitleApplications>Applications</TitleApplications>
             <ApplicationsContainer>
-              <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+              <JobApplications selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
             </ApplicationsContainer>
         </Wrapper>
         <Wrapper>

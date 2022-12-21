@@ -166,9 +166,13 @@ export const JobsWrapper = styled.div`
     gap: 1rem;
     justify-content: ${({ selectedJobPage }) => (selectedJobPage === 'jobDetails' ? 'center' : 'flex-start')};
 
-    @media screen and (max-width: 912px) {
+    @media screen and (max-width: 960px) {
       margin: 1rem 1rem;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (max-width: 720px) {
+        grid-template-columns: 1fr;
     }
 `
 
@@ -185,14 +189,14 @@ export const JobsContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    @media screen and (max-width: 912px) {
+    @media screen and (max-width: 960px) {
      grid-template-columns: 1fr;
     }
 `
 
 export const TitleApplications = styled.h1`
     color: var(--greyDark);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 1rem;
 `
 

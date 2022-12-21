@@ -32,7 +32,7 @@ const EmployerProfileUpdate = ({ selectedProfile }) => {
             <InputContainer>
                 <InputWrap>
                     <InputLabel>Location</InputLabel>
-                    <Input className='country' placeholder='Where are you located?' />
+                    <Input className='update-country' placeholder='Where are you located?' />
                 </InputWrap>
                 <InputWrap>
                     <InputLabel>Employees</InputLabel>

@@ -42,7 +42,7 @@ const EmployerProfileNav = ({ selectedPage, togglePage }) => {
                 </NavMenu>
                 <RightSide>
                     <ImageWrap>
-                        <Image src={profileIcon} />
+                        {/* <Image src={profileIcon} /> */}
                     </ImageWrap>
                     <Name className='nav-company'></Name>
                 </RightSide>

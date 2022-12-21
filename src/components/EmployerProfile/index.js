@@ -21,6 +21,7 @@ const EmployerProfile = () => {
         const employerControls = EmployerControls()
         employerControls.Nav().setNavName()
         employerControls.Info().setInfoDetails()
+        employerControls.Update().setInitialValues()
     }, [])
 
     

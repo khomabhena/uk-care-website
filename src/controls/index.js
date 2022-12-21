@@ -283,23 +283,24 @@ export const EmployerControls = () => {
         const setInitialValues = async () => {
             const data = await getData()
 
-            document.querySelector('.companyName').value = data.companyName
-            document.querySelector('.name').value = data.name
-            document.querySelector('.country').value = data.country
-            document.querySelector('.employees').value = data.employees
-            document.querySelector('.intro').value = data.intro
-            document.querySelector('.registrationNumber').value = data.registrationNumber
-            document.querySelector('.twitter').value = data.twitter
-            document.querySelector('.phone').value = data.phone
-            document.querySelector('.linkedin').value = data.linkedin
-            document.querySelector('.website').value = data.website
+            document.querySelector('.companyName').value = data.companyName || ''
+            document.querySelector('.name').value = data.name || ''
+            document.querySelector('.update-country').value = data.country || ''
+            document.querySelector('.employees').value = data.employees || ''
+            document.querySelector('.intro').value = data.intro || ''
+            document.querySelector('.registrationNumber').value = data.registrationNumber || ''
+            document.querySelector('.twitter').value = data.twitter || ''
+            document.querySelector('.phone').value = data.phone || ''
+            document.querySelector('.linkedin').value = data.linkedin || ''
+            document.querySelector('.website').value = data.website || ''
         
+            return data
         }
 
         const getFormData = () => {
             const companyName = document.querySelector('.companyName').value
             const name = document.querySelector('.name').value
-            const country = document.querySelector('.country').value
+            const country = document.querySelector('.update-country').value
             const employees = document.querySelector('.employees').value
             const intro = document.querySelector('.intro').value
             const registrationNumber = document.querySelector('.registrationNumber').value
@@ -374,12 +375,12 @@ export const EmployerControls = () => {
             const data = await getData();
 
             document.querySelector('.info-company').textContent = data.companyName
-            document.querySelector('.info-established-top').textContent = "Since " + data.established
+            // document.querySelector('.info-established-top').textContent = "Since " + data.established || ''
             document.querySelector('.info-name').textContent = data.name
             document.querySelector('.info-employees').textContent = data.employees
             document.querySelector('.info-country').textContent = data.country
             document.querySelector('.info-website').textContent = data.website
-            document.querySelector('.info-established').textContent = "Since " + data.established
+            // document.querySelector('.info-established').textContent = "Since " + data.established || ''
             document.querySelector('.overview-about').textContent = data.intro
         };
 

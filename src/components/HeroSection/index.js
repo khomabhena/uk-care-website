@@ -15,7 +15,7 @@ const HeroSection2 = () => {
   return (
     <HeroSection2Container id='home'>
         <TextContent>
-            <Hero2H1 primary='true'>Our Best</Hero2H1>
+            <Hero2H1 primary='true'>Hire The Best</Hero2H1>
             <Hero2H1 primary='true'>Care Givers</Hero2H1>
             <Hero2H2 primary='true'></Hero2H2>
             <Hero2P>Join a network of the world's best care givers &amp; get full-time, long-term care giving jobs with better compensation and career growth.</Hero2P>

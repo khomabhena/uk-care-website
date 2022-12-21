@@ -8,7 +8,7 @@ const EmployerProfileInfo = () => {
   return (
     <>
             <Name className='info-company'></Name>
-            <Profession className='info-established-top'></Profession>
+            {/* <Profession className='info-established-top'></Profession> */}
             <SocialMediaWrap>
               <IconWrap><FaFacebook /></IconWrap>
               <IconWrap><FiTwitter /></IconWrap>
@@ -37,8 +37,8 @@ const EmployerProfileInfo = () => {
                 <Text className='info-website'></Text>
               </ContactWrap>
               <ContactWrap>
-                <ContactTitle>Established</ContactTitle>
-                <Text className='info-established'></Text>
+                {/* <ContactTitle>Established</ContactTitle>
+                <Text className='info-established'></Text> */}
               </ContactWrap>
             </ContactContainer>
         </>
