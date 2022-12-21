@@ -11,7 +11,7 @@ import ProfileUpdate from '../ProfileUpdate'
 import { IconContext } from 'react-icons/lib'
 import Jobs from '../Jobs'
 import JobDetails from '../JobDetails'
-import { ApplicantControls } from '../../controls'
+import { ApplicantControls, FirebaseStorage } from '../../controls'
 import ProfileQualifications from '../ProfileQualifications'
 import ProfileExperience from '../ProfileExperience'
 import JobApplications from '../JobApplications'
@@ -21,6 +21,7 @@ const Profile = () => {
   const [selectedPage, setPage] = useState('profile');
   const [selectedProfile, setProfile] = useState('overview');
   const [selectedJobPage, setJobPage] = useState('jobs');
+  const [jobs, setJobs] = useState([])
 
   useEffect(() => {
     const applicantControls = ApplicantControls()
@@ -29,7 +30,26 @@ const Profile = () => {
     applicantControls.Info().setInfoDetails()
     applicantControls.Overview().setIntro()
     applicantControls.Update().setInitialValues()
+
+    const getJobs = async () => {
+      const jobsArray = []
+      const res = await FirebaseStorage().getAllData('jobs')
+      
+      res.forEach(item => {
+        let newObject = {}
+        item.data.jobs.forEach(obj => {
+          newObject = {...obj, id: item.id}
+          jobsArray.push(newObject)
+        })
+      })
+
+      setJobs(jobsArray)
+      // console.log(jobs)
+    }
+
+    getJobs()
   }, [])
+
 
   const togglePage = (id) => {
       setPage(id)
@@ -74,8 +94,14 @@ const Profile = () => {
         <Wrapper>
             <TitleApplications>Your Jobs</TitleApplications>
             <JobsContainer>
-              <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-              <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+              {
+                jobs?.map((item, index) => {
+                  return (
+                    <Jobs jobs={item} key={index} selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+                  )
+                })
+              }
+              {/* <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} /> */}
             </JobsContainer>
         </Wrapper>
         {/* <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />

@@ -35,8 +35,13 @@ export const FirebaseStorage = () => {
 
     const getAllData = async (path) => {
         const snapshot = await getDocs(collection(db, path))
-        
-        return snapshot
+        const array = []
+        snapshot.forEach(doc => {
+            // console.log(doc.id, " => ", doc.data())
+            array.push({id: doc.id, data: doc.data()})
+        })
+
+        return array
     }
 
     const uploadFile = async (folderPath, file, path, id, data, dUrl, name) => {
@@ -401,7 +406,8 @@ export const EmployerControls = () => {
                 salary,
                 country,
                 profession,
-                description
+                description,
+                date: new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()
             }
         }
 
