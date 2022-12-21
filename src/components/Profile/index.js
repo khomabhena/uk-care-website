@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ProfileNav from '../ProfileNav'
 import { 
+  ApplicationsContainer,
   Experience,
-  HorizontalLine, JobsContainer, LeftSide, 
-  NavWrap, Overview, ProfileContainer, Qualifications, RightSide, Update } from './ProfileElements'
+  HorizontalLine, JobsContainer, JobsWrapper, LeftSide, 
+  NavWrap, Overview, ProfileContainer, Qualifications, RightSide, TitleApplications, Update, Wrapper } from './ProfileElements'
 import ProfileInfo from '../ProfileInfo' 
 import ProfileOverview from '../ProfileOverview'
 import ProfileUpdate from '../ProfileUpdate'
@@ -62,13 +63,23 @@ const Profile = () => {
       </ProfileContainer>
 
       {/* Jobs Container */}
-      <JobsContainer selectedJobPage={selectedJobPage} selectedPage={selectedPage === 'jobs'}>
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-        <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
-        <JobDetails selectedJobPage={selectedJobPage === 'jobDetails'} toggleJobPage={toggleJobPage} />
-      </JobsContainer>
+      <JobsWrapper selectedJobPage={selectedJobPage} selectedPage={selectedPage === 'jobs'}>
+        <Wrapper>
+            <TitleApplications>Applications</TitleApplications>
+            <ApplicationsContainer>
+              <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+            </ApplicationsContainer>
+        </Wrapper>
+        <Wrapper>
+            <TitleApplications>Your Jobs</TitleApplications>
+            <JobsContainer>
+              <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+              <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+            </JobsContainer>
+        </Wrapper>
+        {/* <Jobs selectedJobPage={selectedJobPage === 'jobs'} toggleJobPage={toggleJobPage} />
+        <JobDetails selectedJobPage={selectedJobPage === 'jobDetails'} toggleJobPage={toggleJobPage} /> */}
+      </JobsWrapper>
 
     </IconContext.Provider>
     </>

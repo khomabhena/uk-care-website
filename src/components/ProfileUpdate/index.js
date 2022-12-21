@@ -46,7 +46,7 @@ const ProfileUpdate = ({ selectedProfile }) => {
                 </InputWrap>
             </InputContainer>
             <InputLabel>Upload Profile Picture</InputLabel>
-            <FileChooser className='profile' type='file' />
+            <FileChooser className='update-profile' type='file' accept='image/*' />
             
             <Title>Profile</Title>
             <InputLabel>Introduce Yourself</InputLabel>
@@ -63,9 +63,9 @@ const ProfileUpdate = ({ selectedProfile }) => {
                 </InputWrap>
             </InputContainer>
             <InputLabel>Attachments CV</InputLabel>
-            <FileChooser className='cv' type='file' />
+            <FileChooser className='cv' type='file' accept='.pdf, .doc, .docx, .txt' />
             <InputLabel>National ID/Passport</InputLabel>
-            <FileChooser className='id' type='file' />
+            <FileChooser className='id' type='file' accept='image/*, .pdf, .doc, .docx' />
 
             <Title>Social Media</Title>
             <InputContainer>

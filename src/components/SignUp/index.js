@@ -23,6 +23,24 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const [data, setData] = useState({
+        address: '',
+        country: '',
+        cv: '',
+        cvUrl: '',
+        experience: [],
+        facebook: '',
+        id: '',
+        idUrl: '',
+        intro: '',
+        languages: [],
+        phone: '',
+        profession: '',
+        profile: '',
+        profileUrl: '',
+        qualifications: [],
+        twitter: '',
+        uid: '',
+        whatsapp: '',
         firstName: '',
         lastName: '',
         email: ''

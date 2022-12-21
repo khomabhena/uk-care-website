@@ -30,6 +30,7 @@ const ProfileOverview = ({ data, selectedProfile }) => {
           <EducationContainer>
           <Title>Education</Title>
               {
+                
                 dataObj['qualifications']?.map((item, index) => {
                   return (
                       <EducationWrap key={index}>

@@ -110,6 +110,8 @@ export const RightSide = styled.div`
 `
 
 export const ImageWrap = styled.div`
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     display: flex;
     justify-content: center;

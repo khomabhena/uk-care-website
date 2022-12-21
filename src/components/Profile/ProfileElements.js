@@ -157,16 +157,43 @@ export const Experience = styled.h4`
 
 
 // Jobs Container
-export const JobsContainer = styled.div`
-    display: ${({ selectedPage }) => (selectedPage ? 'flex' : 'none')};
-    flex-direction: row;
-    flex-wrap: wrap;
+export const JobsWrapper = styled.div`
+    display: ${({ selectedPage }) => (selectedPage ? 'grid' : 'none')};
+    min-height: 80vh;
+    grid-template-columns: 1fr 3fr;
+    grid-auto-rows: repeat(auto-fit, minmax(50px, 1fr));
     margin: 1rem 2rem;
+    gap: 1rem;
     justify-content: ${({ selectedJobPage }) => (selectedJobPage === 'jobDetails' ? 'center' : 'flex-start')};
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 912px) {
       margin: 1rem 1rem;
+      grid-template-columns: 1fr;
     }
+`
+
+export const Wrapper = styled.div`
+
+`
+
+export const ApplicationsContainer = styled.div`
+    min-height: 50vh;
+    display: grid;
+`
+
+export const JobsContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 912px) {
+     grid-template-columns: 1fr;
+    }
+`
+
+export const TitleApplications = styled.h1`
+    color: var(--greyDark);
+    font-size: 1.5rem;
+    margin: 1rem;
 `
 
 

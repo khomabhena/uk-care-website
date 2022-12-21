@@ -39,7 +39,7 @@ const ProfileNav = ({ selectedPage, togglePage }) => {
                         duration={500} spy={true} exact='true' offset={-80}
                         >Suggested Jobs</NavLinks>
                     </NavItem>
-                    <NavItem>
+                    {/* <NavItem>
                         <NavLinks to="qualifications"
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
@@ -50,7 +50,7 @@ const ProfileNav = ({ selectedPage, togglePage }) => {
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
                         >Experience</NavLinks>
-                    </NavItem>
+                    </NavItem> */}
                     <NavItem>
                         <NavLinks to="trainings"
                         smooth={true}

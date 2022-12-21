@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const JobWrapper = styled.div`
     display: ${({ selectedJobPage }) => (selectedJobPage ? 'flex' : 'none')};
     flex-direction: column;
-    width: 30%;
+    /* width: 30%; */
     margin: 1rem 1rem;
     border: 1px solid var(--greyLight);
     border-radius: 8px;

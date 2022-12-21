@@ -137,7 +137,7 @@ export const ApplicantControls = () => {
             document.querySelector('.whatsApp').value = data.whatsApp || ''
             document.querySelector('.cv').name = data.cv || ''
             document.querySelector('.id').name = data.id || ''
-            document.querySelector('.profile').name = data.profile || ''
+            document.querySelector('.update-profile').name = data.profile || ''
         };
 
         const getFormData = () => {
@@ -171,7 +171,7 @@ export const ApplicantControls = () => {
         const getFiles = () => {
             const fileCV = document.querySelector('.cv').files[0];
             const fileID = document.querySelector('.id').files[0];
-            const fileProfilePicture = document.querySelector('.profile').files[0];
+            const fileProfilePicture = document.querySelector('.update-profile').files[0];
 
             return {
                 fileCV, fileID, fileProfilePicture
