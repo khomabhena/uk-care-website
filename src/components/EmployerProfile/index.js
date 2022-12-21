@@ -9,7 +9,7 @@ import JobDetails from '../JobDetails'
 import EmployerProfileInfo from '../EmployerProfileInfo'
 import EmployerProfileNav from '../EmployerProfileNav'
 import EmployerJobs from '../EmployerJobs'
-import { EmployerControls } from '../../controls'
+import { EmployerControls, FirebaseStorage } from '../../controls'
 import { JobContainer } from '../EmployerJobs/EmployerJobsElements'
 
 const EmployerProfile = () => {
@@ -17,12 +17,21 @@ const EmployerProfile = () => {
     const [selectedPage, setPage] = useState('profile');
     const [selectedProfile, setProfile] = useState('overview');
     const [selectedJobPage, setJobPage] = useState('jobs');
+    const [jobs, setJobs] = useState([])
 
     useEffect(() => {
         const employerControls = EmployerControls()
         employerControls.Nav().setNavName()
         employerControls.Info().setInfoDetails()
         employerControls.Update().setInitialValues()
+
+        const getData = async () => {
+          const res = await FirebaseStorage().getData('jobs', localStorage.getItem('userEmail'))
+          
+          setJobs(res.jobs)
+      }
+
+      getData()
     }, [])
 
     
@@ -58,8 +67,13 @@ const EmployerProfile = () => {
         <Wrapper>
           <TitleApplications>Job Posts</TitleApplications>
           <JobsContainer>
-            <EmployerJobs shortWidth='true' />
-            <EmployerJobs shortWidth='true' />
+          {
+              jobs?.map((item, index) => {
+                return (
+                  <EmployerJobs key={index} jobs={item} />
+                )
+              })
+            }
           </JobsContainer>
         </Wrapper>
         <Wrapper>
