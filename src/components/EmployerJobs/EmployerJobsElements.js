@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const OutterContainer = styled.div`
-    width: ${({ shortWidth }) => ( shortWidth ? '50%' : '100%')};
+    /* width: ${({ shortWidth }) => ( shortWidth ? '50%' : '100%')}; */
 
     @media screen and (max-width: 912px) {
-        width: 100%;
+        /* width: 100%; */
     }
 `
 

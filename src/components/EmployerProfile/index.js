@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { 
-  HorizontalLine, JobsContainer, JobsCreate, LeftSide, 
-  NavWrap, Overview, ProfileContainer, RightSide, Update } from './EmployerProfileElements' 
+  HorizontalLine, JobsWrapper, JobsCreate, LeftSide, 
+  NavWrap, Overview, ProfileContainer, RightSide, Update, JobsContainer, ApplicationsContainer, Wrapper, TitleApplications } from './EmployerProfileElements' 
 import EmployerProfileOverview from '../EmployerProfileOverview'
 import EmployerProfileUpdate from '../EmployerProfileUpdate'
 import { IconContext } from 'react-icons/lib'
@@ -10,6 +10,7 @@ import EmployerProfileInfo from '../EmployerProfileInfo'
 import EmployerProfileNav from '../EmployerProfileNav'
 import EmployerJobs from '../EmployerJobs'
 import { EmployerControls } from '../../controls'
+import { JobContainer } from '../EmployerJobs/EmployerJobsElements'
 
 const EmployerProfile = () => {
 
@@ -53,12 +54,22 @@ const EmployerProfile = () => {
       </ProfileContainer>
 
       {/* Jobs Container */}
-      <JobsContainer selectedJobPage={selectedJobPage} selectedPage={selectedPage === 'jobs'}>
-        <EmployerJobs shortWidth='true' />
-        <EmployerJobs shortWidth='true' />
-        <EmployerJobs shortWidth='true' />
+      <JobsWrapper selectedJobPage={selectedJobPage} selectedPage={selectedPage === 'jobs'}>
+        <Wrapper>
+          <TitleApplications>Job Posts</TitleApplications>
+          <JobsContainer>
+            <EmployerJobs shortWidth='true' />
+            <EmployerJobs shortWidth='true' />
+          </JobsContainer>
+        </Wrapper>
+        <Wrapper>
+          <TitleApplications>Applications</TitleApplications>
+          <ApplicationsContainer>
+            <EmployerJobs shortWidth='true' />
+          </ApplicationsContainer>
+        </Wrapper>
         <JobDetails selectedJobPage={selectedJobPage === 'jobDetails'} toggleJobPage={toggleJobPage} />
-      </JobsContainer>
+      </JobsWrapper>
 
       <JobsCreate selectedPage={selectedPage === 'createJob'}>
         Create Job

@@ -33,12 +33,12 @@ const EmployerProfileNav = ({ selectedPage, togglePage }) => {
                         duration={500} spy={true} exact='true' offset={-80}
                         >My Jobs</NavLinks>
                     </NavItem>
-                    <NavItem>
+                    {/* <NavItem>
                         <NavLinks to="qualifications"
                         smooth={true}
                         duration={500} spy={true} exact='true' offset={-80}
                         >Applications</NavLinks>
-                    </NavItem>
+                    </NavItem> */}
                 </NavMenu>
                 <RightSide>
                     <ImageWrap>

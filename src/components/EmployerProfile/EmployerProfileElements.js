@@ -125,16 +125,39 @@ export const Update = styled.h4`
 
 
 // Jobs Container
-export const JobsContainer = styled.div`
-    display: ${({ selectedPage }) => (selectedPage ? 'flex' : 'none')};
-    flex-direction: row;
-    flex-wrap: wrap;
+export const JobsWrapper = styled.div`
+    display: ${({ selectedPage }) => (selectedPage ? 'grid' : 'none')};
+    grid-template-columns: 1fr 3fr;
     margin: 1rem 2rem;
     justify-content: ${({ selectedJobPage }) => (selectedJobPage === 'jobDetails' ? 'center' : 'flex-start')};
 
     @media screen and (max-width: 480px) {
       margin: 1rem 1rem;
     }
+`
+
+export const Wrapper = styled.div`
+
+`
+
+export const JobsContainer = styled.div`
+    min-height: 50vh;
+    display: grid;
+`
+
+export const ApplicationsContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 960px) {
+     grid-template-columns: 1fr;
+    }
+`
+
+export const TitleApplications = styled.h1`
+    color: var(--greyDark);
+    font-size: 1.2rem;
+    margin: 1rem;
 `
 
 export const JobsCreate = styled.div`
